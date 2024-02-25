@@ -25,7 +25,7 @@ export const SetupStore = () => {
       </div>
 
       <>
-        <div className=" medium:flex relative    hidden items-center justify-center  rounded-lg   ">
+        <div className=" medium:flex relative hidden     items-center justify-center  rounded-lg   ">
           {stepperData?.map((item, i) => {
             if (item.status === "complete") {
               return (

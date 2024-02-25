@@ -13,8 +13,8 @@ import Discounts from "../domain/discounts"
 import GiftCards from "../domain/gift-cards"
 import Inventory from "../domain/inventory"
 import Oauth from "../domain/oauth"
-import Orders from "../domain/orders"
-import DraftOrders from "../domain/orders/draft-orders"
+
+import DraftOrders from "../domain/__orders/draft-orders"
 import PriceListRoute from "../domain/pricing"
 import ProductCategories from "../domain/product-categories"
 import ProductsRoute from "../domain/products"
@@ -24,7 +24,8 @@ import Settings from "../domain/settings"
 import { useRoutes } from "../providers/route-provider"
 import { isRoute } from "../utils/extensions"
 import Home from "../domain/home"
-import CreateOrder from "../domain/orders/create"
+import CreateOrder from "../domain/__orders/create"
+import Orders from "../domain/orders-ms"
 
 const IndexPage = () => {
   const navigate = useNavigate()

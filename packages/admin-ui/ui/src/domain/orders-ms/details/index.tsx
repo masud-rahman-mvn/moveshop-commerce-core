@@ -317,7 +317,7 @@ const OrderDetails = () => {
   )
 
   return (
-    <div>
+    <div className="p-6">
       <OrderEditProvider orderId={id!}>
         <BackButton
           path="/a/orders"
@@ -342,7 +342,7 @@ const OrderDetails = () => {
                 )
               })}
             </div>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 border bg-white">
               <div className="gap-y-base flex h-full w-7/12 flex-col">
                 <BodyCard
                   className={"min-h-[200px] w-full"}
