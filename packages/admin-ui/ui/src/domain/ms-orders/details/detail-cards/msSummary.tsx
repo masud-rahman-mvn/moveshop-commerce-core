@@ -215,7 +215,7 @@ const MsSummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
       title="Order Summary"
     >
       <ItemsEdit order={order} />
-      <OrderEditContainer order={order} />
+      {/* <OrderEditContainer order={order} /> */}
     </BodyCard>
   )
 }

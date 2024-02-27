@@ -344,7 +344,7 @@ const OrderDetails = () => {
               })}
             </div>
             <div className="flex  space-x-4">
-              <div className="gap-y-base flex h-full w-7/12 flex-col">
+              <div className="gap-y-base flex h-full w-8/12 flex-col">
                 <BodyCard
                   className={" w-full rounded-lg  bg-white p-5 shadow"}
                   customHeader={

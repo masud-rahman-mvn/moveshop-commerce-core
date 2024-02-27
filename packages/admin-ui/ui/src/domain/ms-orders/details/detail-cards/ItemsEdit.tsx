@@ -32,7 +32,7 @@ const ItemsEdit = (props: SummaryCardProps) => {
   const [note, setNote] = useState<string | undefined>()
   const [showFilter, setShowFilter] = useState(false)
   const [filterTerm, setFilterTerm] = useState<string>("")
-
+  const [isUpdate, setIsUpdate] = useState(false)
   const {
     mutateAsync: requestConfirmation,
     isLoading: isRequestingConfirmation,
@@ -77,11 +77,11 @@ const ItemsEdit = (props: SummaryCardProps) => {
   }
 
   return (
-    <div className="flex  flex-col pt-4">
+    <div className="">
       {true && (
-        <Table className=" rounded-lg  border p-3 ">
-          <Table.Head className=" border">
-            <Table.HeadRow className="text-grey-50 inter-small-semibold mt-3 ">
+        <Table className=" ">
+          <Table.Head className=" ">
+            <Table.HeadRow className="text-small  rounded-lg   font-bold text-black ">
               <Table.HeadCell>
                 {t("components-item-name", "Item Name")}
               </Table.HeadCell>
@@ -89,7 +89,7 @@ const ItemsEdit = (props: SummaryCardProps) => {
                 {t("components-item-price", "Item Price")}
               </Table.HeadCell>
               <Table.HeadCell></Table.HeadCell>
-              <Table.HeadCell className=" text-end ">
+              <Table.HeadCell className=" text-center ">
                 {t("components-quantity", "Quantity")}
               </Table.HeadCell>
               <Table.HeadCell className="text-center ">
@@ -134,12 +134,18 @@ const ItemsEdit = (props: SummaryCardProps) => {
                     X
                   </Table.Cell>
                   <Table.Cell className="flex flex-col items-center text-center ">
-                    <QuantityCell quantity={item?.quantity} />
+                    {isUpdate ? (
+                      <QuantityCell quantity={item?.quantity} />
+                    ) : (
+                      <p className="text-large">{item?.quantity}</p>
+                    )}
                   </Table.Cell>
                   <Table.Cell>
-                    <div className="flex gap-3">
-                      <span>{order?.currency_code.toLocaleUpperCase()}</span>
-                      <span>{order?.total}</span>
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="flex items-center gap-3">
+                        <span>{order?.currency_code.toLocaleUpperCase()}</span>
+                        <span>{order?.total}</span>
+                      </div>
                     </div>
                   </Table.Cell>
                   <Table.Cell>

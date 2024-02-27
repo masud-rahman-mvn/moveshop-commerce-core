@@ -200,7 +200,11 @@ const OrderEditLine = ({
   ].filter(Boolean)
 
   return (
-    <Tooltip content={"test"} side="top" open={isLocked ? undefined : false}>
+    <Tooltip
+      content={"three dot"}
+      side="top"
+      open={isLocked ? undefined : false}
+    >
       <>
         <Actionables forceDropdown actions={actions} />
       </>

@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import Actionables, { ActionType } from "../actionables"
 import FilteringOptions, { FilteringOptionProps } from "./filtering-option"
 
@@ -99,7 +100,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
             )}
           </div>
         </div>
-        <div className="relative">
+        <div >
           <table
             ref={ref}
             className={clsx("w-full table-auto", className)}
