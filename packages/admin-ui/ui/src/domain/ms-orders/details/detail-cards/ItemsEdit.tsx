@@ -1,155 +1,81 @@
-import { Product, ProductVariant, Region } from "@medusajs/medusa"
 import clsx from "clsx"
-import React, { useContext, useEffect, useState } from "react"
-import { Controller } from "react-hook-form"
-import { useTranslation } from "react-i18next"
-import Button from "../../../../components/fundamentals/button"
-import TrashIcon from "../../../../components/fundamentals/icons/trash-icon"
-import ImagePlaceholder from "../../../../components/fundamentals/image-placeholder"
-import { LayeredModalContext } from "../../../../components/molecules/modal/layered-modal"
-import { SteppedContext } from "../../../../components/molecules/modal/stepped-modal"
 
-import {
-  displayAmount,
-  extractUnitPrice,
-  getNativeSymbol,
-  persistedPrice,
-} from "../../../../utils/prices"
-import RMASelectProductSubModal from "../rma-sub-modals/products"
-import { useNewOrderForm } from "../../new/form"
-import CustomItemSubModal from "../../new/components/custom-item-sub-modal"
-import { useMedusa } from "medusa-react"
+import { useTranslation } from "react-i18next"
+
+import ImagePlaceholder from "../../../../components/fundamentals/image-placeholder"
+
 import QuantityCell from "../../../../components/molecules/ms-input-number"
 import Table from "../../../../components/molecules/ms-table"
+import { Order } from "@medusajs/medusa"
+import OrderEditLine from "../order-line/edit"
+import { fieldsItems } from "./data/fieldsItem"
+import { item } from "./data/item"
+import { ProductVariant } from "@medusajs/client-types"
+import { useEffect, useRef, useState } from "react"
+import {
+  useAdminDeleteOrderEdit,
+  useAdminOrderEditAddLineItem,
+  useAdminRequestOrderEditConfirmation,
+  useAdminUpdateOrderEdit,
+} from "medusa-react"
+import useNotification from "../../../../hooks/use-notification"
 
-const ItemsEdit = () => {
+type SummaryCardProps = {
+  order?: Order
+}
+const ItemsEdit = (props: SummaryCardProps) => {
+  const { order } = props
   const { t } = useTranslation()
-  const { enableNextPage, disableNextPage, nextStepEnabled } =
-    React.useContext(SteppedContext)
+
+  const filterRef = useRef()
+  const notification = useNotification()
+  const [note, setNote] = useState<string | undefined>()
+  const [showFilter, setShowFilter] = useState(false)
+  const [filterTerm, setFilterTerm] = useState<string>("")
 
   const {
-    context: { region, items },
-    form: { control, register, setValue },
-  } = useNewOrderForm()
+    mutateAsync: requestConfirmation,
+    isLoading: isRequestingConfirmation,
+  } = useAdminRequestOrderEditConfirmation(item.id)
 
-  const { client } = useMedusa()
+  const { mutateAsync: updateOrderEdit, isLoading: isUpdating } =
+    useAdminUpdateOrderEdit(item.id)
 
-  const { fields, append, remove, update } = items
+  const { mutateAsync: deleteOrderEdit } = useAdminDeleteOrderEdit(item.id)
 
-  const [editQuantity, setEditQuantity] = useState(-1)
-  const [editPrice, setEditPrice] = useState(-1)
+  const { mutateAsync: addLineItem } = useAdminOrderEditAddLineItem(item.id)
 
-  const layeredContext = useContext(LayeredModalContext)
+  const onSave = async () => {
+    try {
+      await requestConfirmation()
+      if (note) {
+        await updateOrderEdit({ internal_note: note })
+      }
 
-  const addItem = async (variants: ProductVariant[]) => {
-    const ids = fields.map((field) => field.variant_id)
-
-    const itemsToAdd = variants.filter((v) => !ids.includes(v.id))
-
-    const variantIds = itemsToAdd.map((v) => v.id)
-
-    const { variants: newVariants } = await client.admin.variants.list({
-      id: variantIds,
-      region_id: region?.id,
-    })
-
-    append(
-      newVariants.map((item) => ({
-        quantity: 1,
-        variant_id: item.id,
-        title: item.title as string,
-        unit_price: extractUnitPrice(item, region as Region, false),
-        product_title: (item.product as Product)?.title,
-        thumbnail: (item.product as Product)?.thumbnail,
-      }))
-    )
-
-    if (!nextStepEnabled) {
-      enableNextPage()
+      notification(
+        t("edit-success", "Success"),
+        t("edit-order-edit-set-as-requested", "Order edit set as requested"),
+        "success"
+      )
+    } catch (e) {
+      notification(
+        t("edit-error", "Error"),
+        t(
+          "edit-failed-to-request-confirmation",
+          "Failed to request confirmation"
+        ),
+        "error"
+      )
     }
+    close()
   }
 
-  const handleEditQuantity = (index: number, value: number) => {
-    const field = fields[index]
-    field.quantity = field.quantity + value
-
-    if (field.quantity > 0) {
-      update(index, field)
-    }
+  const onCancel = async () => {
+    // NOTE: has to be this order of ops
+    await deleteOrderEdit()
+    close()
   }
 
-  const handlePriceChange = (
-    index: number,
-    value: number,
-    currency: string
-  ) => {
-    const dbPrice = persistedPrice(currency, value)
-    setValue(`items.${index}.unit_price`, dbPrice)
-  }
-
-  const addCustomItem = (title: string, quantity: number, amount: number) => {
-    append({
-      title,
-      unit_price: amount,
-      quantity: quantity,
-    })
-
-    if (!nextStepEnabled) {
-      enableNextPage()
-    }
-  }
-
-  const removeItem = (index: number) => {
-    remove(index)
-
-    if (nextStepEnabled && [].length < 1) {
-      disableNextPage()
-    }
-  }
-
-  useEffect(() => {
-    if ([].length) {
-      enableNextPage()
-    } else {
-      disableNextPage()
-    }
-  }, [])
-  const fieldsItems = [
-    {
-      quantity: 1,
-      variant_id: "variant_01HPB2Y1VK4Q1XPEMBCZ6SJ0KM",
-      title: "S / White",
-      unit_price: 2200,
-      product_title: "Medusa T-Shirt",
-      thumbnail:
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-front.png",
-      id: "bf60e83b-e3f7-4fe5-8e94-7b19e0abd902",
-    },
-    {
-      quantity: 1,
-      variant_id: "variant_01HPB2Y1VSTR2QW40VKYW2AJSG",
-      title: "M / Black",
-      unit_price: 2200,
-      product_title: "Medusa T-Shirt",
-      thumbnail:
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-front.png",
-      id: "36d258a1-3798-466a-a081-9e30d57d083d",
-    },
-    {
-      quantity: 1,
-      variant_id: "variant_01HPB2Y1VZ0AR812MPCPAYXSM8",
-      title: "M / White",
-      unit_price: 2200,
-      product_title: "Medusa T-Shirt",
-      thumbnail:
-        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-front.png",
-      id: "80ddf88a-fe86-4668-b2d0-167f7b9ce650",
-    },
-  ]
-
-  const onNumberIncrement = () => {}
-
-  const onNumberDecrement = () => {}
   return (
     <div className="flex  flex-col pt-4">
       {true && (
@@ -159,11 +85,11 @@ const ItemsEdit = () => {
               <Table.HeadCell>
                 {t("components-item-name", "Item Name")}
               </Table.HeadCell>
-              <Table.HeadCell className="pr-8 text-center ">
+              <Table.HeadCell className=" text-center ">
                 {t("components-item-price", "Item Price")}
               </Table.HeadCell>
               <Table.HeadCell></Table.HeadCell>
-              <Table.HeadCell className="pr-8 text-end ">
+              <Table.HeadCell className=" text-end ">
                 {t("components-quantity", "Quantity")}
               </Table.HeadCell>
               <Table.HeadCell className="text-center ">
@@ -201,7 +127,7 @@ const ItemsEdit = () => {
                       </div>
                     </div>
                   </Table.Cell>
-                  <Table.Cell className="w-32 pr-8 text-center ">
+                  <Table.Cell className="w-32  text-center ">
                     <span>{item.unit_price}</span>
                   </Table.Cell>
                   <Table.Cell className="text-large text-start  text-black ">
@@ -211,13 +137,17 @@ const ItemsEdit = () => {
                     <QuantityCell quantity={item?.quantity} />
                   </Table.Cell>
                   <Table.Cell>
-                    <Button
-                      variant="ghost"
-                      size="small"
-                      onClick={() => removeItem(index)}
-                    >
-                      <TrashIcon size={20} className="text-grey-50" />
-                    </Button>
+                    <div className="flex gap-3">
+                      <span>{order?.currency_code.toLocaleUpperCase()}</span>
+                      <span>{order?.total}</span>
+                    </div>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <OrderEditLine
+                      currencyCode="USD"
+                      customerId={order?.customer_id}
+                      item={item}
+                    />
                   </Table.Cell>
                 </Table.Row>
               )
@@ -227,27 +157,6 @@ const ItemsEdit = () => {
       )}
     </div>
   )
-}
-
-const SelectProductsScreen = (pop, itemsToAdd, setSelectedItems, t) => {
-  return {
-    title: t("components-add-products", "Add Products"),
-    onBack: () => pop(),
-    view: (
-      <RMASelectProductSubModal
-        selectedItems={itemsToAdd || []}
-        onSubmit={setSelectedItems}
-      />
-    ),
-  }
-}
-
-const CreateCustomProductScreen = (pop, onSubmit, region, t) => {
-  return {
-    title: t("components-add-custom-item", "Add Custom Item"),
-    onBack: () => pop(),
-    view: <CustomItemSubModal onSubmit={onSubmit} region={region} />,
-  }
 }
 
 export default ItemsEdit

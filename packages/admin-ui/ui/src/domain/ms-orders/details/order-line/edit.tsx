@@ -24,10 +24,10 @@ import Tooltip from "../../../../components/atoms/tooltip"
 import CopyToClipboard from "../../../../components/atoms/copy-to-clipboard"
 
 type OrderEditLineProps = {
-  item: LineItem
-  customerId: string
-  regionId: string
-  currencyCode: string
+  item?: LineItem
+  customerId?: string
+  regionId?: string
+  currencyCode?: string
   change?: OrderItemChange
 }
 
@@ -177,6 +177,16 @@ const OrderEditLine = ({
       icon: <RefreshIcon size="20" />,
     },
     {
+      label: t("order-line-request-return", "Request return"),
+      onClick: onDuplicate,
+      icon: <DuplicateIcon size="20" />,
+    },
+    {
+      label: t("order-line-register-claim", "Register claim"),
+      onClick: onDuplicate,
+      icon: <DuplicateIcon size="20" />,
+    },
+    {
       label: t("order-line-duplicate-item", "Duplicate item"),
       onClick: onDuplicate,
       icon: <DuplicateIcon size="20" />,
@@ -190,140 +200,10 @@ const OrderEditLine = ({
   ].filter(Boolean)
 
   return (
-    <Tooltip
-      side="top"
-      open={isLocked ? undefined : false}
-      content={t(
-        "order-line-line-item-cannot-be-edited",
-        "This line item is part of a fulfillment and cannot be edited. Cancel the fulfillment to edit the line item."
-      )}
-    >
-      <div className="hover:bg-grey-5 rounded-rounded mx-[-5px] mb-1 flex h-[64px] justify-between px-[5px] py-2">
-        <div className="flex-grow-1 flex justify-center space-x-4">
-          <div className="rounded-rounded flex h-[48px] w-[36px] overflow-hidden">
-            {item.thumbnail ? (
-              <img src={item.thumbnail} className="object-cover" />
-            ) : (
-              <ImagePlaceholder />
-            )}
-          </div>
-          <div className="flex flex-col justify-center">
-            <div className="flex max-w-[310px] items-center gap-2">
-              <span
-                className={clsx(
-                  "text-grey-900 flex-shrink-0 flex-grow font-semibold",
-                  {
-                    "text-gray-400": isLocked,
-                  }
-                )}
-              >
-                {item.title}
-              </span>
-              {item?.variant?.options && (
-                <span
-                  className={clsx(
-                    "flex-shrink-1 flex gap-3 truncate text-gray-400",
-                    {
-                      "text-gray-400": isLocked,
-                    }
-                  )}
-                >
-                  ({item.variant.options.map((o) => o.value).join(" • ")})
-                </span>
-              )}
-            </div>
-            <div className="flex items-center">
-              {isNew && (
-                <div className="text-small bg-blue-10 rounded-rounded mr-2 flex h-[24px] w-[42px] flex-shrink-0 items-center justify-center text-blue-500">
-                  {t("order-line-new", "New")}
-                </div>
-              )}
-
-              {isModified && (
-                <div className="text-small bg-orange-10 rounded-rounded mr-2 flex h-[24px] w-[68px] flex-shrink-0 items-center justify-center text-orange-500">
-                  {t("order-line-modified", "Modified")}
-                </div>
-              )}
-
-              <div className="min-h-[20px]">
-                {item.variant?.sku && (
-                  <CopyToClipboard
-                    value={item.variant?.sku}
-                    displayValue={
-                      <span
-                        className={clsx("flex gap-3 text-gray-500", {
-                          "text-gray-400": isLocked,
-                        })}
-                      >
-                        {item.variant?.sku}
-                      </span>
-                    }
-                    successDuration={1000}
-                  />
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex min-w-[312px] items-center justify-between">
-          <div
-            className={clsx("flex flex-grow-0 items-center text-gray-400", {
-              "pointer-events-none": isLocked,
-            })}
-          >
-            <MinusIcon
-              className={clsx("cursor-pointer text-gray-400", {
-                "pointer-events-none": isLoading,
-              })}
-              onClick={() =>
-                item.quantity > 1 &&
-                !isLocked &&
-                onQuantityUpdate(item.quantity - 1)
-              }
-            />
-            <span
-              className={clsx("min-w-[74px] px-8 text-center text-gray-900", {
-                "!text-gray-400": isLocked,
-              })}
-            >
-              {item.quantity}
-            </span>
-            <PlusIcon
-              className={clsx("cursor-pointer text-gray-400", {
-                "pointer-events-none": isLoading,
-              })}
-              onClick={() => onQuantityUpdate(item.quantity + 1)}
-            />
-          </div>
-
-          <div className="flex h-full items-center gap-6">
-            <div
-              className={clsx(
-                "small:space-x-2 medium:space-x-4 large:space-x-6 flex",
-                { "pointer-events-none !text-gray-400": isLocked }
-              )}
-            >
-              <div
-                className={clsx("min-w-[60px] text-right text-gray-900", {
-                  "pointer-events-none !text-gray-400": isLocked,
-                })}
-              >
-                {formatAmountWithSymbol({
-                  amount: item.unit_price * item.quantity,
-                  currency: currencyCode,
-                  tax: item.includes_tax ? 0 : item.tax_lines,
-                  digits: 2,
-                })}
-                <span className="ml-2 text-gray-400">
-                  {currencyCode.toUpperCase()}
-                </span>
-              </div>
-            </div>
-            <Actionables forceDropdown actions={actions} />
-          </div>
-        </div>
-      </div>
+    <Tooltip content={"test"} side="top" open={isLocked ? undefined : false}>
+      <>
+        <Actionables forceDropdown actions={actions} />
+      </>
     </Tooltip>
   )
 }

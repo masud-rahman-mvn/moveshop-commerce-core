@@ -85,7 +85,7 @@ const QuantityCell = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div
-        className={clsx("w-20 rounded-lg border px-3 py-1", className)}
+        className={clsx("w-20 rounded-lg border px-3 py-0.5", className)}
         {...props}
       >
         <div className="flex items-center justify-between gap-3">

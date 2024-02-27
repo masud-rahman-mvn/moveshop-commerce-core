@@ -214,7 +214,7 @@ const MsSummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
       className={"my-4 h-auto min-h-0 w-full rounded-lg bg-white p-5 shadow"}
       title="Order Summary"
     >
-      <ItemsEdit />
+      <ItemsEdit order={order} />
       <OrderEditContainer order={order} />
     </BodyCard>
   )
