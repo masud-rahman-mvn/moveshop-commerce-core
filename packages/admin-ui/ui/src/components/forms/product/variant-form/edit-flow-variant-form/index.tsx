@@ -9,7 +9,7 @@ import VariantStockForm, { VariantStockFormType } from "../variant-stock-form"
 
 import Accordion from "../../../../organisms/accordion"
 import IconTooltip from "../../../../molecules/icon-tooltip"
-import InputField from "../../../../molecules/input"
+import QuantityCell from "../../../../molecules/ms-input-number"
 import { PricesFormType } from "../../../general/prices-form"
 import { nestedForm } from "../../../../../utils/nested-form"
 import { useFeatureFlag } from "../../../../../providers/feature-flag-provider"
@@ -81,7 +81,7 @@ const EditFlowVariantForm = ({ form, isEdit }: Props) => {
             <div className="gap-large pb-2xsmall grid grid-cols-2">
               {fields.map((field, index) => {
                 return (
-                  <InputField
+                  <QuantityCell
                     required
                     key={field.id}
                     label={field.title}

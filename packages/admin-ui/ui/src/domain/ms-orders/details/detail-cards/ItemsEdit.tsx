@@ -4,13 +4,11 @@ import React, { useContext, useEffect, useState } from "react"
 import { Controller } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import Button from "../../../../components/fundamentals/button"
-import MinusIcon from "../../../../components/fundamentals/icons/minus-icon"
-import PlusIcon from "../../../../components/fundamentals/icons/plus-icon"
 import TrashIcon from "../../../../components/fundamentals/icons/trash-icon"
 import ImagePlaceholder from "../../../../components/fundamentals/image-placeholder"
 import { LayeredModalContext } from "../../../../components/molecules/modal/layered-modal"
 import { SteppedContext } from "../../../../components/molecules/modal/stepped-modal"
-import Table from "../../../../components/molecules/table"
+
 import {
   displayAmount,
   extractUnitPrice,
@@ -21,6 +19,8 @@ import RMASelectProductSubModal from "../rma-sub-modals/products"
 import { useNewOrderForm } from "../../new/form"
 import CustomItemSubModal from "../../new/components/custom-item-sub-modal"
 import { useMedusa } from "medusa-react"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
+import Table from "../../../../components/molecules/ms-table"
 
 const ItemsEdit = () => {
   const { t } = useTranslation()
@@ -146,11 +146,15 @@ const ItemsEdit = () => {
       id: "80ddf88a-fe86-4668-b2d0-167f7b9ce650",
     },
   ]
+
+  const onNumberIncrement = () => {}
+
+  const onNumberDecrement = () => {}
   return (
     <div className="flex  flex-col pt-4">
       {true && (
-        <Table className="rounded-lg  p-3 ">
-          <Table.Head className="border">
+        <Table className=" rounded-lg  border p-3 ">
+          <Table.Head className=" border">
             <Table.HeadRow className="text-grey-50 inter-small-semibold mt-3 ">
               <Table.HeadCell>
                 {t("components-item-name", "Item Name")}
@@ -159,7 +163,7 @@ const ItemsEdit = () => {
                 {t("components-item-price", "Item Price")}
               </Table.HeadCell>
               <Table.HeadCell></Table.HeadCell>
-              <Table.HeadCell className="pr-8 text-center ">
+              <Table.HeadCell className="pr-8 text-end ">
                 {t("components-quantity", "Quantity")}
               </Table.HeadCell>
               <Table.HeadCell className="text-center ">
@@ -167,7 +171,8 @@ const ItemsEdit = () => {
               </Table.HeadCell>
             </Table.HeadRow>
           </Table.Head>
-          <Table.Body className="mt-3">
+          <div className="h-3"></div>
+          <Table.Body className="">
             {fieldsItems?.map((item, index) => {
               return (
                 <Table.Row
@@ -199,12 +204,11 @@ const ItemsEdit = () => {
                   <Table.Cell className="w-32 pr-8 text-center ">
                     <span>{item.unit_price}</span>
                   </Table.Cell>
-                  <Table.Cell className="text-grey-40 pr-1 text-center ">
+                  <Table.Cell className="text-large text-start  text-black ">
                     X
                   </Table.Cell>
-                  <Table.Cell className="text-center ">
-                    {/* <InputNumber type="number" value={item?.quantity} /> */}
-                    <span>{item.quantity}</span>
+                  <Table.Cell className="flex flex-col items-center text-center ">
+                    <QuantityCell quantity={item?.quantity} />
                   </Table.Cell>
                   <Table.Cell>
                     <Button

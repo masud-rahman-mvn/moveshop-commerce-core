@@ -23,7 +23,7 @@ import useToggleState from "../../../../hooks/use-toggle-state"
 import { useFeatureFlag } from "../../../../providers/feature-flag-provider"
 import PlusIcon from "../../../../components/fundamentals/icons/plus-icon"
 import { useState } from "react"
-import InputField from "../../../../components/molecules/input"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
 import CrossIcon from "../../../../components/fundamentals/icons/cross-icon"
 import Button from "../../../../components/fundamentals/button"
 
@@ -264,7 +264,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
 
         {!showDiscountField ? (
           <div className="flex justify-between">
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <PlusIcon size={10} />
               <p
                 className="cursor-pointer text-[10px] font-bold underline"
@@ -278,7 +278,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
         ) : (
           <div>
             <div className="flex items-center">
-              <InputField
+              <QuantityCell
                 placeholder="Discount"
                 suffix={
                   <Button className="h-8 w-12" variant="primary">

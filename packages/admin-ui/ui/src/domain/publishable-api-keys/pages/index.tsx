@@ -13,7 +13,7 @@ import Spacer from "../../../components/atoms/spacer"
 import Button from "../../../components/fundamentals/button"
 import ChannelsIcon from "../../../components/fundamentals/icons/channels-icon"
 import CrossIcon from "../../../components/fundamentals/icons/cross-icon"
-import InputField from "../../../components/molecules/input"
+import QuantityCell from "../../../components/molecules/ms-input-number"
 import FocusModal from "../../../components/molecules/modal/focus-modal"
 import SalesChannelsSummary from "../../../components/molecules/sales-channels-summary"
 import BodyCard from "../../../components/organisms/body-card"
@@ -206,7 +206,7 @@ function CreatePublishableKey(props: CreatePublishableKeyProps) {
               "Create and manage API keys. Right now this is only related to sales channels."
             )}
           </p>
-          <InputField
+          <QuantityCell
             label="Title"
             type="string"
             name="name"
@@ -216,7 +216,7 @@ function CreatePublishableKey(props: CreatePublishableKeyProps) {
             onChange={(ev) => setName(ev.target.value)}
           />
 
-          <div className="mt-16 mb-8 h-[1px] w-[100%] bg-gray-200" />
+          <div className="mb-8 mt-16 h-[1px] w-[100%] bg-gray-200" />
 
           <AddSalesChannelsSection
             selectedChannels={selectedChannels}

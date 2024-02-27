@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next"
 import Button from "../../../../components/fundamentals/button"
 import CrossIcon from "../../../../components/fundamentals/icons/cross-icon"
 import FocusModal from "../../../../components/molecules/modal/focus-modal"
-import InputField from "../../../../components/molecules/input"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
 import { LineItem } from "@medusajs/medusa"
 import { ReservationItemDTO } from "@medusajs/types"
 import Select from "../../../../components/molecules/select/next-select/select"
@@ -320,7 +320,7 @@ export const ReservationLineItem: React.FC<{
           <p>{availableQuantity || 0} available</p>
           <p>({inStockQuantity || 0} in stock)</p>
         </div>
-        <InputField
+        <QuantityCell
           {...register(path(`quantity`), { valueAsNumber: true })}
           type="number"
           className="min-w-[120px]"

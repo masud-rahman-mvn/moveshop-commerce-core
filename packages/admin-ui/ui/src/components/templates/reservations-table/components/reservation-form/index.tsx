@@ -2,7 +2,7 @@ import Button from "../../../../fundamentals/button"
 import { Controller } from "react-hook-form"
 import { DecoratedInventoryItemDTO } from "@medusajs/medusa"
 import { useTranslation } from "react-i18next"
-import InputField from "../../../../molecules/input"
+import QuantityCell from "../../../../molecules/ms-input-number"
 import ItemSearch from "../../../../molecules/item-search"
 import LocationDropdown from "../../../../molecules/location-dropdown"
 import { NestedForm } from "../../../../../utils/nested-form"
@@ -96,10 +96,10 @@ const ReservationForm: React.FC<Props> = ({ form }) => {
             bg-grey-5 text-grey-50 border-grey-20 
             mt-8
             grid border-collapse grid-cols-2 grid-rows-5 
-            [&>*]:border-r [&>*]:border-b [&>*]:py-2 
+            [&>*:nth-child(-n+2)]:border-t [&>*:nth-child(even)]:pr-4 [&>*:nth-child(even)]:text-right 
             [&>*:nth-child(odd)]:border-l [&>*:nth-child(odd)]:pl-4 
-            [&>*:nth-child(even)]:pr-4 [&>*:nth-child(even)]:text-right 
-            [&>*:nth-child(-n+2)]:border-t`}
+            [&>*]:border-b [&>*]:border-r 
+            [&>*]:py-2`}
             >
               <div className="rounded-tl-rounded">
                 {t("reservation-form-item", "Item")}
@@ -160,7 +160,7 @@ const ReservationForm: React.FC<Props> = ({ form }) => {
             )}
           </p>
         </div>
-        <InputField
+        <QuantityCell
           {...register(path("description"))}
           placeholder={t("reservation-form-description", "Description")}
         />

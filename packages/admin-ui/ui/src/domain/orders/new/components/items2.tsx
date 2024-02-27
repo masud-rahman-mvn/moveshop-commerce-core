@@ -8,7 +8,7 @@ import MinusIcon from "../../../../components/fundamentals/icons/minus-icon"
 import PlusIcon from "../../../../components/fundamentals/icons/plus-icon"
 import TrashIcon from "../../../../components/fundamentals/icons/trash-icon"
 import ImagePlaceholder from "../../../../components/fundamentals/image-placeholder"
-import InputField from "../../../../components/molecules/input"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
 import { LayeredModalContext } from "../../../../components/molecules/modal/layered-modal"
 import { SteppedContext } from "../../../../components/molecules/modal/stepped-modal"
 import Table2 from "../../../../components/molecules/table/table-2"
@@ -169,7 +169,7 @@ const Items2 = () => {
                   </Table2.Cell>
                   <Table2.Cell className="w-32 pr-8 text-right">
                     {editQuantity === index ? (
-                      <InputField
+                      <QuantityCell
                         type="number"
                         {...register(`items.${index}.quantity`, {
                           valueAsNumber: true,
@@ -216,7 +216,7 @@ const Items2 = () => {
                         name={`items.${index}.unit_price`}
                         render={({ field: { value } }) => {
                           return (
-                            <InputField
+                            <QuantityCell
                               type="number"
                               value={displayAmount(region.currency_code, value)}
                               onBlur={() => {

@@ -1,7 +1,7 @@
 import { Pencil } from "@medusajs/icons"
 import React, { useState } from "react"
 import Modal from "../../../components/molecules/modal"
-import InputField from "../../../components/molecules/input"
+import QuantityCell from "../../../components/molecules/ms-input-number"
 import PlusIcon from "../../../components/fundamentals/icons/plus-icon"
 import Button from "../../../components/fundamentals/button"
 
@@ -34,7 +34,11 @@ const AddressDetailsCard: React.FC<AddressDetails> = ({ title, content }) => {
             <h2 className="text-[20px] font-bold">{title}</h2>
           </div>
           <div>
-            <Pencil className="cursor-pointer" color="gray" onClick={openModal} />
+            <Pencil
+              className="cursor-pointer"
+              color="gray"
+              onClick={openModal}
+            />
           </div>
         </div>
         <div className="pb-2">
@@ -55,10 +59,10 @@ const AddressDetailsCard: React.FC<AddressDetails> = ({ title, content }) => {
               <p className="font-bold">{title}</p>
             </div>
           </Modal.Header>
-          <Modal.Body className="p-6 !w-[780px]">
+          <Modal.Body className="!w-[780px] p-6">
             <div className="mb-4 grid grid-cols-2 gap-6">
               {content.map((detail, index) => (
-                <InputField
+                <QuantityCell
                   placeholder={detail.value}
                   title={detail.label}
                   label={detail.label}

@@ -8,7 +8,7 @@ import { NestedForm } from "../../../../utils/nested-form"
 import InputError from "../../../atoms/input-error"
 import IconTooltip from "../../../molecules/icon-tooltip"
 import IndeterminateCheckbox from "../../../molecules/indeterminate-checkbox"
-import InputField from "../../../molecules/input"
+import QuantityCell from "../../../molecules/ms-input-number"
 import { NextSelect } from "../../../molecules/select/next-select"
 import TextArea from "../../../molecules/textarea"
 import PriceFormInput from "../../general/prices-form/price-form-input"
@@ -104,7 +104,7 @@ const DiscountGeneralForm = ({
             "grid-cols-1": type === DiscountRuleType.FREE_SHIPPING,
           })}
         >
-          <InputField
+          <QuantityCell
             label="Code"
             required
             errors={errors}
@@ -132,7 +132,7 @@ const DiscountGeneralForm = ({
               }}
             />
           ) : type === DiscountRuleType.PERCENTAGE ? (
-            <InputField
+            <QuantityCell
               label="Percentage"
               placeholder="Percentage"
               errors={errors}

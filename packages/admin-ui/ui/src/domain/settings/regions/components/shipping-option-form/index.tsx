@@ -8,7 +8,7 @@ import MetadataForm, {
 } from "../../../../../components/forms/general/metadata-form"
 import PriceFormInput from "../../../../../components/forms/general/prices-form/price-form-input"
 import InputHeader from "../../../../../components/fundamentals/input-header"
-import InputField from "../../../../../components/molecules/input"
+import QuantityCell from "../../../../../components/molecules/ms-input-number"
 import { NextSelect } from "../../../../../components/molecules/select/next-select"
 import { Option, ShippingOptionPriceType } from "../../../../../types/shared"
 import FormValidator from "../../../../../utils/form-validator"
@@ -82,7 +82,7 @@ const ShippingOptionForm = ({ form, region, isEdit = false }: Props) => {
           {t("shipping-option-form-details", "Details")}
         </h3>
         <div className="gap-large grid grid-cols-2">
-          <InputField
+          <QuantityCell
             label={t("shipping-option-form-title", "Title")}
             required
             {...register("name", {

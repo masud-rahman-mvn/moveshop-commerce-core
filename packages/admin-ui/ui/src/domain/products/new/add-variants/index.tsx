@@ -14,7 +14,7 @@ import Button from "../../../../components/fundamentals/button"
 import PlusIcon from "../../../../components/fundamentals/icons/plus-icon"
 import TrashIcon from "../../../../components/fundamentals/icons/trash-icon"
 import IconTooltip from "../../../../components/molecules/icon-tooltip"
-import InputField from "../../../../components/molecules/input"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
 import Modal from "../../../../components/molecules/modal"
 import LayeredModal, {
   LayeredModalContext,
@@ -297,7 +297,7 @@ const AddVariantsForm = ({
                       key={field.fieldId}
                       className="gap-x-xsmall grid grid-cols-[230px_1fr_40px]"
                     >
-                      <InputField
+                      <QuantityCell
                         placeholder={t("add-variants-color", "Color...")}
                         {...register(path(`options.${index}.title`))}
                       />

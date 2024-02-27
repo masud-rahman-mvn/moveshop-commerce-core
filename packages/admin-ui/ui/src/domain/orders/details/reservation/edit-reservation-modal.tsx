@@ -20,7 +20,7 @@ import { useTranslation } from "react-i18next"
 
 import Button from "../../../../components/fundamentals/button"
 import CrossIcon from "../../../../components/fundamentals/icons/cross-icon"
-import InputField from "../../../../components/molecules/input"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
 import { LineItem } from "@medusajs/medusa"
 import { ReserveLineItemForm } from "./reserve-items-modal"
 import Select from "../../../../components/molecules/select/next-select/select"
@@ -291,10 +291,10 @@ const EditReservationDrawer = ({
                   inter-base-regular
                   mt-6
                   grid border-collapse grid-cols-2 grid-rows-3 
-                  [&>*]:border-r [&>*]:border-b [&>*]:py-2 
+                  [&>*:nth-child(-n+2)]:border-t [&>*:nth-child(even)]:pr-4 [&>*:nth-child(even)]:text-right 
                   [&>*:nth-child(odd)]:border-l [&>*:nth-child(odd)]:pl-4 
-                  [&>*:nth-child(even)]:pr-4 [&>*:nth-child(even)]:text-right 
-                  [&>*:nth-child(-n+2)]:border-t`}
+                  [&>*]:border-b [&>*]:border-r 
+                  [&>*]:py-2`}
                   >
                     <div className="rounded-tl-rounded">Item</div>
                     <div className="rounded-tr-rounded flex justify-end space-x-3">
@@ -347,7 +347,7 @@ const EditReservationDrawer = ({
                       "What type of reservation is this?"
                     )}
                   </p>
-                  <InputField
+                  <QuantityCell
                     {...register("item.description")}
                     placeholder={t("reservation-description", "Description")}
                   />
@@ -386,7 +386,7 @@ const EditReservationDrawer = ({
               </Button>
             </div>
           </div>
-          <div className="gap-x-xsmall flex w-full justify-end border-t px-8 pt-4 pb-6">
+          <div className="gap-x-xsmall flex w-full justify-end border-t px-8 pb-6 pt-4">
             <Button
               variant="ghost"
               size="small"

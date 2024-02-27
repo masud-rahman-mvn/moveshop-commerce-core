@@ -12,7 +12,7 @@ import CalendarIcon from "../../../../fundamentals/icons/calendar-icon"
 import CheckIcon from "../../../../fundamentals/icons/check-icon"
 import CrossIcon from "../../../../fundamentals/icons/cross-icon"
 import FilterDropdownContainer from "../../../../molecules/filter-dropdown/container"
-import InputField from "../../../../molecules/input"
+import QuantityCell from "../../../../molecules/ms-input-number"
 import Spinner from "../../../../atoms/spinner"
 import Switch from "../../../../atoms/switch"
 import TagDotIcon from "../../../../fundamentals/icons/tag-dot-icon"
@@ -213,14 +213,14 @@ const SearchableFilterInventoryItem = ({
         }}
       >
         <div className="gap-y-xsmall mb-2 flex w-full flex-col pt-2">
-          <InputField
+          <QuantityCell
             value={query}
             className="pr-1"
             prefix={
               selectedItems.size === 0 ? null : (
                 <div
                   onClick={reset}
-                  className="bg-grey-10 border-grey-20 text-grey-40 rounded-rounded gap-x-2xsmall mr-xsmall flex cursor-pointer items-center border py-0.5 pr-1 pl-2"
+                  className="bg-grey-10 border-grey-20 text-grey-40 rounded-rounded gap-x-2xsmall mr-xsmall flex cursor-pointer items-center border py-0.5 pl-2 pr-1"
                 >
                   <span className="text-grey-50">{selectedItems.size}</span>
                   <CrossIcon size={16} />
@@ -279,7 +279,7 @@ const InventoryItemItem = ({
   <div
     key={key}
     onClick={onClick}
-    className="hover:bg-grey-10 rounded-rounded flex items-center py-1.5 px-2"
+    className="hover:bg-grey-10 rounded-rounded flex items-center px-2 py-1.5"
   >
     <div className="mr-2 flex h-[20px] w-[20px] items-center">
       {selected && <CheckIcon size={16} color="#111827" />}
@@ -368,7 +368,7 @@ const CreatedByFilterItem = ({
         }}
       >
         <div className="gap-y-xsmall mb-2 flex w-full flex-col pt-2">
-          <InputField
+          <QuantityCell
             value={query}
             placeholder="Find user"
             onChange={(e) => setQuery(e.target.value)}
@@ -376,7 +376,7 @@ const CreatedByFilterItem = ({
               selectedUsers.size === 0 ? null : (
                 <div
                   onClick={reset}
-                  className="bg-grey-10 border-grey-20 text-grey-40 rounded-rounded gap-x-2xsmall mr-xsmall flex cursor-pointer items-center border py-0.5 pr-1 pl-2"
+                  className="bg-grey-10 border-grey-20 text-grey-40 rounded-rounded gap-x-2xsmall mr-xsmall flex cursor-pointer items-center border py-0.5 pl-2 pr-1"
                 >
                   <span className="text-grey-50">{selectedUsers.size}</span>
                   <CrossIcon size={16} />
@@ -431,7 +431,7 @@ const CreatedByItem = ({
     <div
       key={key}
       onClick={onClick}
-      className="hover:bg-grey-10 inter-small-regular rounded-rounded flex items-center py-1.5 px-2"
+      className="hover:bg-grey-10 inter-small-regular rounded-rounded flex items-center px-2 py-1.5"
     >
       <div className="inter-small-regular mr-2 flex h-[20px] w-[20px] items-center">
         {selected && <CheckIcon size={16} color="#111827" />}
@@ -488,7 +488,7 @@ const TextFilterItem = ({
             value={filterType}
             onChange={selectFilterType}
           />
-          <InputField
+          <QuantityCell
             value={fieldValue?.[filterType.value]}
             placeholder="Write something"
             onChange={(e) => updateFieldValue(e.target.value)}
@@ -610,7 +610,7 @@ const NumberFilterItem = ({
             onChange={selectFilterType}
           />
           <div className="flex items-center gap-x-2">
-            <InputField
+            <QuantityCell
               value={getLowerBoundValue()}
               placeholder="0"
               type="number"
@@ -619,7 +619,7 @@ const NumberFilterItem = ({
             {filterType.value === "between" && (
               <>
                 <span>-</span>
-                <InputField
+                <QuantityCell
                   value={upperBound ?? undefined}
                   placeholder="0"
                   type="number"
@@ -842,7 +842,7 @@ const PopoverSelect = ({
         {options.map((o, i) => (
           <div
             key={i}
-            className="hover:bg-grey-5 rounded-rounded mb-1 flex py-1.5 px-2"
+            className="hover:bg-grey-5 rounded-rounded mb-1 flex px-2 py-1.5"
             onClick={() => onChange(o)}
           >
             <div className="mr-2 h-[20px] w-[20px]">
@@ -881,7 +881,7 @@ const CollapsibleWrapper = ({
       >
         <RadixCollapsible.Trigger
           className={clsx(
-            "text-grey-50 flex w-full cursor-pointer items-center justify-between rounded py-1.5 px-3"
+            "text-grey-50 flex w-full cursor-pointer items-center justify-between rounded px-3 py-1.5"
           )}
         >
           <p>{title}</p>

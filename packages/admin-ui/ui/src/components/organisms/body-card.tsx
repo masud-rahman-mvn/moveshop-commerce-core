@@ -43,7 +43,7 @@ const BodyCard: React.FC<BodyCardProps> = ({
     <div
       className={clsx(
         "rounded-rounded bg-grey-0 border-grey-20 flex h-full w-full flex-col overflow-hidden border",
-        { "min-h-[350px]": !compact },
+        // { "min-h-[350px]": !compact },
         className
       )}
       {...rest}

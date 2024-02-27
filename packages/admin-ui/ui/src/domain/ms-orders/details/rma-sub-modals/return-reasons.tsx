@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import FileUploadField from "../../../../components/atoms/file-upload-field"
 import Button from "../../../../components/fundamentals/button"
 import TrashIcon from "../../../../components/fundamentals/icons/trash-icon"
-import InputField from "../../../../components/molecules/input"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
 import Modal from "../../../../components/molecules/modal"
 import { LayeredModalContext } from "../../../../components/molecules/modal/layered-modal"
 import Select from "../../../../components/molecules/select"
@@ -72,7 +72,7 @@ const RMAReturnReasonSubModal: React.FC<RMAReturnReasonSubModalProps> = ({
               []
             }
           />
-          <InputField
+          <QuantityCell
             label={t("rma-sub-modals-note", "Note")}
             value={note}
             className="my-4"

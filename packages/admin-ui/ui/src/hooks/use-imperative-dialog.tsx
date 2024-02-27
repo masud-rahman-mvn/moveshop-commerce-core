@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { createRoot } from "react-dom/client"
 import Button from "../components/fundamentals/button"
-import InputField from "../components/molecules/input"
+import QuantityCell from "../components/molecules/ms-input-number"
 import Modal from "../components/molecules/modal"
 
 const DeleteDialog = ({
@@ -32,7 +32,7 @@ const DeleteDialog = ({
                 <span className="font-semibold">"{entityName}"</span> to
                 confirm.
               </span>
-              <InputField
+              <QuantityCell
                 autoFocus={true}
                 placeholder={entityName}
                 className={"mt-base"}

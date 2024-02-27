@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next"
 
 import Button from "../../fundamentals/button"
 import ImagePlaceholder from "../../fundamentals/image-placeholder"
-import InputField from "../../molecules/input"
+import QuantityCell from "../../molecules/ms-input-number"
 import InputHeader from "../../fundamentals/input-header"
 import Modal from "../../molecules/modal"
 import { NextSelect } from "../../molecules/select/next-select"
@@ -84,7 +84,7 @@ const LocationDropdown = ({
 const InventoryTable: React.FC<InventoryTableProps> = () => {
   const { store } = useAdminStore()
 
-  console.log(store,"store")
+  console.log(store, "store")
 
   const location = useLocation()
   const { t } = useTranslation()
@@ -102,7 +102,7 @@ const InventoryTable: React.FC<InventoryTableProps> = () => {
     return defaultQueryProps
   }, [store])
 
-  console.log(defaultQuery,"defaultQuery")
+  console.log(defaultQuery, "defaultQuery")
 
   const {
     reset,
@@ -464,7 +464,7 @@ const AdjustAvailabilityModal = ({
                   </div>
                 </span>
               </div>
-              <InputField
+              <QuantityCell
                 onChange={(e) => setStockedQuantity(e.target.valueAsNumber)}
                 autoFocus
                 type="number"

@@ -1,6 +1,6 @@
 import FormValidator from "../../../../utils/form-validator"
 import { NestedForm } from "../../../../utils/nested-form"
-import InputField from "../../../molecules/input"
+import QuantityCell from "../../../molecules/ms-input-number"
 
 export type AddressContactFormType = {
   first_name: string
@@ -31,7 +31,7 @@ const AddressContactForm = ({
   return (
     <div>
       <div className="gap-large grid grid-cols-2">
-        <InputField
+        <QuantityCell
           {...register(path("first_name"), {
             required: requireFields?.first_name
               ? FormValidator.required("First name")
@@ -43,7 +43,7 @@ const AddressContactForm = ({
           required={requireFields?.first_name}
           errors={errors}
         />
-        <InputField
+        <QuantityCell
           {...form.register(path("last_name"), {
             required: requireFields?.last_name
               ? FormValidator.required("Last name")
@@ -55,7 +55,7 @@ const AddressContactForm = ({
           required={requireFields?.last_name}
           errors={errors}
         />
-        <InputField
+        <QuantityCell
           {...form.register(path("company"), {
             pattern: FormValidator.whiteSpaceRule("Company"),
             required: requireFields?.company
@@ -67,7 +67,7 @@ const AddressContactForm = ({
           label="Company"
           errors={errors}
         />
-        <InputField
+        <QuantityCell
           {...form.register(path("phone"), {
             pattern: FormValidator.whiteSpaceRule("Phone"),
             required: requireFields?.phone

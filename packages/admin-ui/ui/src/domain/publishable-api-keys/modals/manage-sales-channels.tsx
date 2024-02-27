@@ -13,7 +13,7 @@ import Button from "../../../components/fundamentals/button"
 import SideModal from "../../../components/molecules/modal/side-modal"
 import CrossIcon from "../../../components/fundamentals/icons/cross-icon"
 import useNotification from "../../../hooks/use-notification"
-import InputField from "../../../components/molecules/input"
+import QuantityCell from "../../../components/molecules/ms-input-number"
 import SearchIcon from "../../../components/fundamentals/icons/search-icon"
 import SalesChannelTable from "../tables/sales-channels-table"
 import UTurnIcon from "../../../components/fundamentals/icons/u-turn-icon"
@@ -116,7 +116,7 @@ function AddScreen(props: {
 
       <div className="flex-grow">
         <div className="my-6">
-          <InputField
+          <QuantityCell
             small
             name="name"
             type="string"
@@ -282,7 +282,7 @@ function EditScreen(props: {
 
       <div className="flex-grow">
         <div className="my-6 flex items-center justify-between gap-2">
-          <InputField
+          <QuantityCell
             small
             name="name"
             type="string"

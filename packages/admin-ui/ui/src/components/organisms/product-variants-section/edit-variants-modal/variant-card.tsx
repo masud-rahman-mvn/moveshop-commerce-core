@@ -13,7 +13,7 @@ import EditIcon from "../../../fundamentals/icons/edit-icon"
 import GripIcon from "../../../fundamentals/icons/grip-icon"
 import MoreHorizontalIcon from "../../../fundamentals/icons/more-horizontal-icon"
 import Actionables, { ActionType } from "../../../molecules/actionables"
-import InputField from "../../../molecules/input"
+import QuantityCell from "../../../molecules/ms-input-number"
 import { LayeredModalContext } from "../../../molecules/modal/layered-modal"
 import { useEditVariantScreen } from "./edit-variant-screen"
 
@@ -118,7 +118,7 @@ export const VariantCard = ({
       ref={preview}
       data-handler-id={handlerId}
       className={clsx(
-        "rounded-rounded hover:bg-grey-5 focus-within:bg-grey-5 py-xsmall pl-xsmall pr-base grid h-16 translate-y-0 translate-x-0 grid-cols-[32px_1fr_1fr_48px] transition-all",
+        "rounded-rounded hover:bg-grey-5 focus-within:bg-grey-5 py-xsmall pl-xsmall pr-base grid h-16 translate-x-0 translate-y-0 grid-cols-[32px_1fr_1fr_48px] transition-all",
         {
           "bg-grey-5 opacity-50": isDragging,
         }
@@ -140,7 +140,7 @@ export const VariantCard = ({
         {ean && <span className="inter-base-regular text-grey-50">{ean}</span>}
       </div>
       <div className="flex items-center justify-end text-right">
-        <InputField
+        <QuantityCell
           {...register(`variants.${index}.inventory_quantity`, {
             min: FormValidator.nonNegativeNumberRule("Inventory"),
             valueAsNumber: true,

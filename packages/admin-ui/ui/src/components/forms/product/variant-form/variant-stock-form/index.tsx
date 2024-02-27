@@ -5,7 +5,7 @@ import BuildingsIcon from "../../../../fundamentals/icons/buildings-icon"
 import Button from "../../../../fundamentals/button"
 import FeatureToggle from "../../../../fundamentals/feature-toggle"
 import IconBadge from "../../../../fundamentals/icon-badge"
-import InputField from "../../../../molecules/input"
+import QuantityCell from "../../../../molecules/ms-input-number"
 import { LayeredModalContext } from "../../../../molecules/modal/layered-modal"
 import { ManageLocationsScreen } from "../../variant-inventory-form/variant-stock-form"
 import { NestedForm } from "../../../../../utils/nested-form"
@@ -101,13 +101,13 @@ const VariantStockForm = ({ form }: Props) => {
       </p>
       <div className="gap-y-xlarge pt-large flex flex-col">
         <div className="gap-large grid grid-cols-2">
-          <InputField
+          <QuantityCell
             label="Stock keeping unit (SKU)"
             placeholder="SUN-G, JK1234..."
             {...register(path("sku"))}
           />
           {!stockLocationEnabled && (
-            <InputField
+            <QuantityCell
               label="Quantity in stock"
               type="number"
               placeholder="100..."
@@ -117,17 +117,17 @@ const VariantStockForm = ({ form }: Props) => {
               })}
             />
           )}
-          <InputField
+          <QuantityCell
             label="EAN (Barcode)"
             placeholder="123456789102..."
             {...register(path("ean"))}
           />
-          <InputField
+          <QuantityCell
             label="UPC (Barcode)"
             placeholder="023456789104..."
             {...register(path("upc"))}
           />
-          <InputField
+          <QuantityCell
             label="Barcode"
             placeholder="123456789104..."
             {...register(path("barcode"))}
@@ -190,7 +190,7 @@ const VariantStockForm = ({ form }: Props) => {
                       {stockLocationsMap.get(sl.location_id)?.name}
                     </div>
                     <div className="ml-auto flex">
-                      <InputField
+                      <QuantityCell
                         placeholder={"0"}
                         type="number"
                         {...register(

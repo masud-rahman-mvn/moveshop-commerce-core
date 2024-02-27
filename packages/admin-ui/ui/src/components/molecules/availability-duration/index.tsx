@@ -1,6 +1,6 @@
 import { parse } from "iso8601-duration"
 import React, { useEffect, useState } from "react"
-import InputField from "../input"
+import QuantityCell from "../ms-input-number"
 
 type AvailabilityDurationProps = {
   onChange: React.Dispatch<React.SetStateAction<string | undefined>>
@@ -38,7 +38,7 @@ const AvailabilityDuration: React.FC<AvailabilityDurationProps> = ({
   return (
     <div>
       <div className="gap-x-xsmall gap-y-base mt-xlarge grid grid-cols-3 grid-rows-2">
-        <InputField
+        <QuantityCell
           label="Years"
           type="number"
           placeholder="0"
@@ -46,7 +46,7 @@ const AvailabilityDuration: React.FC<AvailabilityDurationProps> = ({
           onChange={(e) => setDurationYears(getValue(e))}
           min={0}
         />
-        <InputField
+        <QuantityCell
           label="Months"
           type="number"
           placeholder="0"
@@ -54,7 +54,7 @@ const AvailabilityDuration: React.FC<AvailabilityDurationProps> = ({
           onChange={(e) => setDurationMonths(getValue(e))}
           min={0}
         />
-        <InputField
+        <QuantityCell
           label="Days"
           type="number"
           placeholder="0"
@@ -62,7 +62,7 @@ const AvailabilityDuration: React.FC<AvailabilityDurationProps> = ({
           onChange={(e) => setDurationDays(getValue(e))}
           min={0}
         />
-        <InputField
+        <QuantityCell
           label="Hours"
           type="number"
           placeholder="0"
@@ -70,7 +70,7 @@ const AvailabilityDuration: React.FC<AvailabilityDurationProps> = ({
           onChange={(e) => setDurationHours(getValue(e))}
           min={0}
         />
-        <InputField
+        <QuantityCell
           label="Minutes"
           type="number"
           placeholder="0"

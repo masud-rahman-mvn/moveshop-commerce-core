@@ -10,7 +10,7 @@ import FileUploadField from "../../components/atoms/file-upload-field"
 import Button from "../../components/fundamentals/button"
 import PlusIcon from "../../components/fundamentals/icons/plus-icon"
 import TrashIcon from "../../components/fundamentals/icons/trash-icon"
-import InputField from "../../components/molecules/input"
+import QuantityCell from "../../components/molecules/ms-input-number"
 import Modal from "../../components/molecules/modal"
 import TextArea from "../../components/molecules/textarea"
 import CurrencyInput from "../../components/organisms/currency-input"
@@ -177,7 +177,7 @@ const NewGiftCard = ({ onClose }: NewGiftCardProps) => {
               </h3>
             </div>
             <div className="gap-y-base flex flex-col">
-              <InputField
+              <QuantityCell
                 label={t("gift-cards-name", "Name")}
                 required
                 placeholder={t(

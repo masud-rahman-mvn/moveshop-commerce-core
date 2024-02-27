@@ -12,7 +12,7 @@ import FormValidator from "../../../utils/form-validator"
 import Button from "../../fundamentals/button"
 import PlusIcon from "../../fundamentals/icons/plus-icon"
 import TrashIcon from "../../fundamentals/icons/trash-icon"
-import InputField from "../../molecules/input"
+import QuantityCell from "../../molecules/ms-input-number"
 import Modal from "../../molecules/modal"
 import { useOptionsContext } from "./options-provider"
 
@@ -197,7 +197,7 @@ const OptionsModal = ({ product, open, onClose }: Props) => {
                       className="gap-x-xsmall grid grid-cols-[1fr,40px]"
                       key={field.id}
                     >
-                      <InputField
+                      <QuantityCell
                         key={field.id}
                         placeholder="Color"
                         {...register(`options.${index}.title`, {

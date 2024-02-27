@@ -15,7 +15,7 @@ import MetadataForm, {
 } from "../../forms/general/metadata-form"
 import Button from "../../fundamentals/button"
 import IconTooltip from "../../molecules/icon-tooltip"
-import InputField from "../../molecules/input"
+import QuantityCell from "../../molecules/ms-input-number"
 import Modal from "../../molecules/modal"
 import { MetadataField } from "../../organisms/metadata"
 
@@ -169,7 +169,7 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
                 {t("collection-modal-details", "Details")}
               </h2>
               <div className="gap-x-base flex items-center">
-                <InputField
+                <QuantityCell
                   label={t("collection-modal-title-label", "Title")}
                   required
                   placeholder={t(
@@ -178,7 +178,7 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
                   )}
                   {...register("title", { required: true })}
                 />
-                <InputField
+                <QuantityCell
                   label={t("collection-modal-handle-label", "Handle")}
                   placeholder={t(
                     "collection-modal-handle-placeholder",

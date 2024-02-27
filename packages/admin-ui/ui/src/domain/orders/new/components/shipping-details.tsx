@@ -11,7 +11,7 @@ import AddressForm, {
 } from "../../../../components/templates/address-form"
 import Medusa from "../../../../services/api"
 import LockIcon from "../../../../components/fundamentals/icons/lock-icon"
-import InputField from "../../../../components/molecules/input"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
 import { SteppedContext } from "../../../../components/molecules/modal/stepped-modal"
 import Select from "../../../../components/molecules/select"
 import RadioGroup from "../../../../components/organisms/radio-group"
@@ -195,7 +195,7 @@ const ShippingDetails = () => {
         <span className="inter-base-semibold">
           {t("components-email", "Email")}
         </span>
-        <InputField
+        <QuantityCell
           {...form.register("email")}
           label={t("components-email", "Email")}
           placeholder="lebron@james.com"

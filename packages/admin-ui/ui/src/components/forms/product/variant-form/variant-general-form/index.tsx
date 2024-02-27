@@ -1,6 +1,6 @@
 import FormValidator from "../../../../../utils/form-validator"
 import { NestedForm } from "../../../../../utils/nested-form"
-import InputField from "../../../../molecules/input"
+import QuantityCell from "../../../../molecules/ms-input-number"
 
 export type VariantGeneralFormType = {
   title: string | null
@@ -25,7 +25,7 @@ const VariantGeneralForm = ({ form }: Props) => {
       </p>
       <div className="pt-large">
         <div className="gap-x-large grid grid-cols-2">
-          <InputField
+          <QuantityCell
             label="Custom title"
             placeholder="Green / XL..."
             {...register(path("title"), {
@@ -33,7 +33,7 @@ const VariantGeneralForm = ({ form }: Props) => {
             })}
             errors={errors}
           />
-          <InputField
+          <QuantityCell
             label="Material"
             placeholder="80% wool, 20% cotton..."
             {...form.register(path("material"), {

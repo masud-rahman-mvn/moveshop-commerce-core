@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next"
 import { useQueryClient } from "@tanstack/react-query"
 import Button from "../../../components/fundamentals/button"
 import CrossIcon from "../../../components/fundamentals/icons/cross-icon"
-import InputField from "../../../components/molecules/input"
+import QuantityCell from "../../../components/molecules/ms-input-number"
 import TextArea from "../../../components/molecules/textarea"
 import FocusModal from "../../../components/molecules/modal/focus-modal"
 import { NextSelect } from "../../../components/molecules/select/next-select"
@@ -57,9 +57,6 @@ type CreateProductCategoryProps = {
   categories: ProductCategory[]
 }
 
-
-
-
 export type CategoryFormData = {
   name: string
   handle: string | undefined
@@ -98,8 +95,7 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
   } = form
   const name = watch("name", "")
 
-  const { mutateAsync: createProductCategory } =
-    useAdminCreateProductCategory()
+  const { mutateAsync: createProductCategory } = useAdminCreateProductCategory()
 
   const submit = handleSubmit(async (data) => {
     try {
@@ -180,7 +176,7 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
           </h4>
 
           <div className="mb-8 flex justify-between gap-6">
-            <InputField
+            <QuantityCell
               required
               label={t("modals-name", "Name") as string}
               type="string"
@@ -194,13 +190,11 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
               {...register("name", { required: true })}
             />
 
-            <InputField
+            <QuantityCell
               label={t("modals-handle", "Handle") as string}
               type="string"
               className="w-[338px]"
-              placeholder={
-                t("modals-custom-handle", "Custom handle") as string
-              }
+              placeholder={t("modals-custom-handle", "Custom handle") as string}
               {...register("handle")}
             />
           </div>
@@ -251,14 +245,14 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
                   return (
                     <NextSelect
                       {...field}
-                      label={
-                        t("modals-visibility", "Visibility") as string
-                      }
+                      label={t("modals-visibility", "Visibility") as string}
                       placeholder="Choose visibility"
                       options={visibilityOptions(t)}
                       value={
                         visibilityOptions(t)[
-                          field.value.value === CategoryVisibility.Public ? 0 : 1
+                          field.value.value === CategoryVisibility.Public
+                            ? 0
+                            : 1
                         ]
                       }
                     />

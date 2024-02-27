@@ -3,7 +3,7 @@ import { NestedForm } from "../../../../utils/nested-form"
 import DatePicker from "../../../atoms/date-picker/date-picker"
 import TimePicker from "../../../atoms/date-picker/time-picker"
 import AvailabilityDuration from "../../../molecules/availability-duration"
-import InputField from "../../../molecules/input"
+import QuantityCell from "../../../molecules/ms-input-number"
 import SwitchableItem from "../../../molecules/switchable-item"
 
 export type DiscountConfigurationFormType = {
@@ -112,7 +112,7 @@ const DiscountConfigurationForm = ({
                 title="Limit the number of redemtions?"
                 description="Limit applies across all customers, not per customer."
               >
-                <InputField
+                <QuantityCell
                   label="Number of redemptions"
                   type="number"
                   placeholder="5"

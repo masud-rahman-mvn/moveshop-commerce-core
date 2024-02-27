@@ -1,6 +1,6 @@
 import Button from "../../../components/fundamentals/button"
 import PlusIcon from "../../../components/fundamentals/icons/plus-icon"
-import InputField from "../../../components/molecules/input"
+import QuantityCell from "../../../components/molecules/ms-input-number"
 import Modal from "../../../components/molecules/modal"
 
 type AddCustomProductModalProps = {
@@ -30,21 +30,21 @@ const AddCustomProductModal = ({
         </Modal.Header>
         <Modal.Body className="p-6">
           <div className="mb-4 grid grid-cols-2 gap-6">
-            <InputField
+            <QuantityCell
               placeholder="MoveOn Sweatshirt"
               title="Title/Product Name"
               label="Title/Product Name"
             />
-            <InputField placeholder="50" title="Quantity" label="Quantity" />
+            <QuantityCell placeholder="50" title="Quantity" label="Quantity" />
           </div>
 
           <div className="grid grid-cols-12 gap-6">
-            <InputField
+            <QuantityCell
               placeholder="BDT"
               className="col-span-3"
               label="Currency"
             />
-            <InputField
+            <QuantityCell
               placeholder="50"
               title="Amount"
               className="col-span-9"

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next"
 import LockIcon from "../../../components/fundamentals/icons/lock-icon"
-import Input from "../../../components/molecules/input"
+import Input from "../../../components/molecules/ms-input-number"
 import FormValidator from "../../../utils/form-validator"
 import { NestedForm } from "../../../utils/nested-form"
 

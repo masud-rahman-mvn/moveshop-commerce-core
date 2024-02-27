@@ -1,4 +1,4 @@
-import Actionables, { ActionType } from "../../molecules/actionables"
+import Actionables, { ActionType } from "../actionables"
 import FilteringOptions, { FilteringOptionProps } from "./filtering-option"
 
 import React from "react"
@@ -74,7 +74,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
 
     return (
       <div className={`flex flex-col ${containerClassName}`}>
-        <div className="mb-2 flex w-full justify-between">
+        <div className="flex w-full justify-between">
           {filteringOptions ? (
             <div className="mb-2 flex self-end">
               {Array.isArray(filteringOptions)
@@ -120,7 +120,7 @@ Table.Head = React.forwardRef<
   <thead
     ref={ref}
     className={clsx(
-      "inter-small-semibold text-grey-50 border-grey-20 whitespace-nowrap border-b border-t",
+      "inter-small-semibold text-grey-50 border-grey-20 whitespace-nowrap ",
       className
     )}
     {...props}
@@ -240,7 +240,7 @@ Table.Row = React.forwardRef<HTMLTableRowElement, TableRowProps>(
       <tr
         ref={ref}
         className={clsx(
-          "inter-small-regular border-grey-20 text-grey-90 border-b border-t",
+          "inter-small-regular border-grey-20 text-grey-90 ",
           className,
           {
             "hover:bg-grey-5 cursor-pointer": linkTo !== undefined || clickable,

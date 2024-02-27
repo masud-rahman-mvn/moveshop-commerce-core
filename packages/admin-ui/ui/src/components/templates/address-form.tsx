@@ -4,7 +4,7 @@ import { Option } from "../../types/shared"
 import FormValidator from "../../utils/form-validator"
 import { nestedForm, NestedForm } from "../../utils/nested-form"
 import MetadataForm, { MetadataFormType } from "../forms/general/metadata-form"
-import Input from "../molecules/input"
+import Input from "../molecules/ms-input-number"
 import { NextSelect } from "../molecules/select/next-select"
 
 export type AddressPayload = {
@@ -56,7 +56,7 @@ const AddressForm = ({
           <span className="inter-base-semibold">
             {t("templates-general", "General")}
           </span>
-          <div className="gap-large mt-4 mb-8 grid grid-cols-2">
+          <div className="gap-large mb-8 mt-4 grid grid-cols-2">
             <Input
               {...register(path("first_name"), {
                 required: required

@@ -7,7 +7,7 @@ import useNotification from "../../../hooks/use-notification"
 import { getErrorMessage } from "../../../utils/error-messages"
 import FormValidator from "../../../utils/form-validator"
 import Button from "../../fundamentals/button"
-import InputField from "../../molecules/input"
+import QuantityCell from "../../molecules/ms-input-number"
 import Modal from "../../molecules/modal"
 
 type EditUserModalProps = {
@@ -74,7 +74,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
           </Modal.Header>
           <Modal.Content>
             <div className="gap-large mb-base grid w-full grid-cols-2">
-              <InputField
+              <QuantityCell
                 label={t("edit-user-modal-first-name-label", "First Name")}
                 placeholder={t(
                   "edit-user-modal-first-name-placeholder",
@@ -88,7 +88,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
                 })}
                 errors={errors}
               />
-              <InputField
+              <QuantityCell
                 label={t("edit-user-modal-last-name-label", "Last Name")}
                 placeholder={t(
                   "edit-user-modal-last-name-placeholder",
@@ -103,7 +103,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
                 errors={errors}
               />
             </div>
-            <InputField
+            <QuantityCell
               label={t("edit-user-modal-email", "Email")}
               disabled
               value={user.email}

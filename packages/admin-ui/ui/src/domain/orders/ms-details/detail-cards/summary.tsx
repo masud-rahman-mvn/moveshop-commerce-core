@@ -23,7 +23,7 @@ import useToggleState from "../../../../hooks/use-toggle-state"
 import { useFeatureFlag } from "../../../../providers/feature-flag-provider"
 import PlusIcon from "../../../../components/fundamentals/icons/plus-icon"
 import { useState } from "react"
-import InputField from "../../../../components/molecules/input"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
 import CrossIcon from "../../../../components/fundamentals/icons/cross-icon"
 import Button from "../../../../components/fundamentals/button"
 
@@ -178,8 +178,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
     <BodyCard
       className={"my-4 h-auto min-h-0 w-full"}
       title="Payment Details"
-     
-        
+
       // actionables={actionables}
     >
       <div className="mt-6">
@@ -219,7 +218,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
             <div className="flex justify-center">
               <PlusIcon size={10} />
               <p
-                className="cursor-pointer font-bold underline text-[10px]"
+                className="cursor-pointer text-[10px] font-bold underline"
                 onClick={() => setShowDiscountField(true)}
               >
                 {" "}
@@ -230,7 +229,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
         ) : (
           <div>
             <div className="flex items-center">
-              <InputField
+              <QuantityCell
                 placeholder="Discount"
                 suffix={
                   <Button className="h-8 w-12" variant="primary">
@@ -245,7 +244,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ order, reservations }) => {
             </div>
 
             {showDiscountField && (
-              <div className="mt-4 max-w-xs overflow-hidden rounded-lg border border-gray-300 shadow-lg hidden">
+              <div className="mt-4 hidden max-w-xs overflow-hidden rounded-lg border border-gray-300 shadow-lg">
                 <div className="bg-[#D9D9D9] px-4 py-2 ">
                   <h2 className="text-xl font-bold">Special Offer!</h2>
                   <p>-20%</p>

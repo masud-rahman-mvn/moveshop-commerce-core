@@ -12,7 +12,7 @@ import Spinner from "../../atoms/spinner"
 import ArrowRightIcon from "../../fundamentals/icons/arrow-right-icon"
 import CheckIcon from "../../fundamentals/icons/check-icon"
 import ChevronUpIcon from "../../fundamentals/icons/chevron-up"
-import InputField from "../input"
+import QuantityCell from "../ms-input-number"
 
 const DAY_IN_SECONDS = 86400
 
@@ -89,7 +89,7 @@ const FilterDropdownItem = ({
 
   return (
     <div
-      className={clsx("w-full cursor-pointer py-2 px-4 ", {
+      className={clsx("w-full cursor-pointer px-4 py-2 ", {
         "inter-small-semibold": open,
         "inter-small-regular": !open,
       })}
@@ -101,7 +101,7 @@ const FilterDropdownItem = ({
       >
         <RadixCollapsible.Trigger
           className={clsx(
-            "hover:bg-grey-5 flex w-full items-center justify-between rounded py-1.5 px-3",
+            "hover:bg-grey-5 flex w-full items-center justify-between rounded px-3 py-1.5",
             {
               "inter-small-semibold": open,
               "inter-small-regular": !open,
@@ -423,8 +423,8 @@ const DateFilter = ({
       case DateFilters.OlderThan:
         return (
           <div className="flex w-full flex-col">
-            <InputField
-              className="pt-0 pb-1"
+            <QuantityCell
+              className="pb-1 pt-0"
               type="number"
               placeholder="2"
               value={relativeAmount}

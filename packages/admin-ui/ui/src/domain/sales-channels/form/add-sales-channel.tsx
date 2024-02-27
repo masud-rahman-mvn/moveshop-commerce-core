@@ -7,7 +7,7 @@ import Button from "../../../components/fundamentals/button"
 import FocusModal from "../../../components/molecules/modal/focus-modal"
 import CrossIcon from "../../../components/fundamentals/icons/cross-icon"
 import Accordion from "../../../components/organisms/accordion"
-import InputField from "../../../components/molecules/input"
+import QuantityCell from "../../../components/molecules/ms-input-number"
 import useNotification from "../../../hooks/use-notification"
 import PlusIcon from "../../../components/fundamentals/icons/plus-icon"
 
@@ -28,7 +28,7 @@ function General(props: GeneralProps) {
   return (
     <div className="gap-y-base my-base flex flex-col">
       <div className="flex-1">
-        <InputField
+        <QuantityCell
           label={t("form-title", "Title")}
           type="string"
           name="name"
@@ -41,7 +41,7 @@ function General(props: GeneralProps) {
         />
       </div>
       <div className="flex-1">
-        <InputField
+        <QuantityCell
           label={t("form-description", "Description")}
           type="string"
           name="description"

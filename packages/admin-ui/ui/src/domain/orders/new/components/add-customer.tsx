@@ -11,7 +11,7 @@ import AddressForm, {
 } from "../../../../components/templates/address-form"
 import Medusa from "../../../../services/api"
 import LockIcon from "../../../../components/fundamentals/icons/lock-icon"
-import InputField from "../../../../components/molecules/input"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
 import { SteppedContext } from "../../../../components/molecules/modal/stepped-modal"
 import Select from "../../../../components/molecules/select"
 import RadioGroup from "../../../../components/organisms/radio-group"
@@ -28,11 +28,13 @@ type AddCustomerFormProps = {
   openWithBillingAddress: boolean
 }
 
-const AddCustomerForm = ({openWithBillingAddress}: AddCustomerFormProps) => {
+const AddCustomerForm = ({ openWithBillingAddress }: AddCustomerFormProps) => {
   const { t } = useTranslation()
   const [addNew, setAddNew] = useState(false)
   const { disableNextPage, enableNextPage } = useContext(SteppedContext)
-  const [showBillingAddress, setShowBillingAddress] = useState(openWithBillingAddress)
+  const [showBillingAddress, setShowBillingAddress] = useState(
+    openWithBillingAddress
+  )
 
   const {
     context: { validCountries },
@@ -139,24 +141,24 @@ const AddCustomerForm = ({openWithBillingAddress}: AddCustomerFormProps) => {
     <div className="min-h-auto flex w-[812px] flex-col gap-y-8 p-6">
       <div className="flex flex-col gap-y-6 border-b-2 border-dotted pb-5">
         <div className="grid grid-cols-2 gap-6">
-          <InputField
+          <QuantityCell
             //   {...form.register("email")}
             label={t("full-name", "Full Name")}
             placeholder="Full Name"
           />
-          <InputField
+          <QuantityCell
             //   {...form.register("email")}
             label={t("company", "Company")}
             placeholder="MoveOn Technologies"
           />
         </div>
         <div className="grid grid-cols-2 gap-6">
-          <InputField
+          <QuantityCell
             //   {...form.register("email")}
             label={t("components-email", "Email")}
             placeholder="lebron@james.com"
           />
-          <InputField
+          <QuantityCell
             //   {...form.register("email")}
             label={t("phone-number", "Phone Number")}
             placeholder="018877558855"
@@ -168,24 +170,24 @@ const AddCustomerForm = ({openWithBillingAddress}: AddCustomerFormProps) => {
           {t("components-shipping", "Shipping")}
         </span>
         <div className="grid grid-cols-2 gap-6">
-          <InputField
+          <QuantityCell
             //   {...form.register("email")}
             label={t("address", "Address")}
             placeholder="Mirpur DOHS, Ave 9"
           />
-          <InputField
+          <QuantityCell
             //   {...form.register("email")}
             label={t("city", "City")}
             placeholder="Dhaka"
           />
         </div>
         <div className="grid grid-cols-2 gap-6">
-          <InputField
+          <QuantityCell
             //   {...form.register("email")}
             label={t("postal-code", "Postal Code")}
             placeholder="5525"
           />
-          <InputField
+          <QuantityCell
             //   {...form.register("email")}
             label={t("country", "Bangladesh")}
             placeholder="Bangladesh"
@@ -214,24 +216,24 @@ const AddCustomerForm = ({openWithBillingAddress}: AddCustomerFormProps) => {
             {t("components-billing", "Billing Address")}
           </span>
           <div className="grid grid-cols-2 gap-6">
-            <InputField
+            <QuantityCell
               //   {...form.register("email")}
               label={t("address", "Address")}
               placeholder="Mirpur DOHS, Ave 9"
             />
-            <InputField
+            <QuantityCell
               //   {...form.register("email")}
               label={t("city", "City")}
               placeholder="Dhaka"
             />
           </div>
           <div className="grid grid-cols-2 gap-6">
-            <InputField
+            <QuantityCell
               //   {...form.register("email")}
               label={t("postal-code", "Postal Code")}
               placeholder="5525"
             />
-            <InputField
+            <QuantityCell
               //   {...form.register("email")}
               label={t("country", "Bangladesh")}
               placeholder="Bangladesh"

@@ -43,7 +43,7 @@ const BodyCard: React.FC<BodyCardProps> = ({
     <div
       className={clsx(
         "flex h-full w-full flex-col   ",
-        { "min-h-[350px]": !compact },
+        // { "min-h-[350px]": !compact },
         className
       )}
       {...rest}
@@ -93,7 +93,7 @@ const BodyCard: React.FC<BodyCardProps> = ({
           </div>
         </div>
 
-        <div className="  medium:px-large px-small">
+        <div className="">
           {children && (
             <div
               className={clsx("flex flex-col", {

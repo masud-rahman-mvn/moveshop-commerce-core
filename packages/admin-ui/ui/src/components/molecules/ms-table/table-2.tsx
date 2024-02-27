@@ -1,4 +1,4 @@
-import Actionables, { ActionType } from "../../molecules/actionables"
+import Actionables, { ActionType } from "../actionables"
 import FilteringOptions, { FilteringOptionProps } from "./filtering-option"
 
 import React from "react"
@@ -50,7 +50,7 @@ type TableType = {
   Cell: TableElement<TableCellProps>
 } & TableElement<TableProps>
 
-const Table = React.forwardRef<HTMLTableElement, TableProps>(
+const Table2 = React.forwardRef<HTMLTableElement, TableProps>(
   (
     {
       className,
@@ -94,7 +94,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
                 placeholder={searchPlaceholder}
                 searchValue={searchValue}
                 onSearch={handleSearch!}
-                className={searchClassName}
+                className={`${searchClassName} !w-[800px]`}
               />
             )}
           </div>
@@ -113,7 +113,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
   }
 ) as TableType
 
-Table.Head = React.forwardRef<
+Table2.Head = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, children, ...props }, ref) => (
@@ -129,7 +129,7 @@ Table.Head = React.forwardRef<
   </thead>
 ))
 
-Table.HeadRow = React.forwardRef<
+Table2.HeadRow = React.forwardRef<
   HTMLTableRowElement,
   React.HTMLAttributes<HTMLTableRowElement>
 >(({ className, children, ...props }, ref) => (
@@ -138,7 +138,7 @@ Table.HeadRow = React.forwardRef<
   </tr>
 ))
 
-Table.HeadCell = React.forwardRef<
+Table2.HeadCell = React.forwardRef<
   HTMLTableCellElement,
   React.HTMLAttributes<HTMLTableCellElement>
 >(({ className, children, ...props }, ref) => (
@@ -147,7 +147,7 @@ Table.HeadCell = React.forwardRef<
   </th>
 ))
 
-Table.SortingHeadCell = React.forwardRef<
+Table2.SortingHeadCell = React.forwardRef<
   HTMLTableCellElement,
   SortingHeadCellProps
 >(
@@ -192,7 +192,7 @@ Table.SortingHeadCell = React.forwardRef<
   }
 )
 
-Table.Body = React.forwardRef<
+Table2.Body = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, children, ...props }, ref) => (
@@ -201,7 +201,7 @@ Table.Body = React.forwardRef<
   </tbody>
 ))
 
-Table.Cell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
+Table2.Cell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
   ({ className, linkTo, children, ...props }, ref) => {
     const navigate = useNavigate()
     return (
@@ -222,7 +222,7 @@ Table.Cell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
   }
 )
 
-Table.Row = React.forwardRef<HTMLTableRowElement, TableRowProps>(
+Table2.Row = React.forwardRef<HTMLTableRowElement, TableRowProps>(
   (
     {
       className,
@@ -255,13 +255,16 @@ Table.Row = React.forwardRef<HTMLTableRowElement, TableRowProps>(
       >
         {children}
         {actions && (
-          <Table.Cell onClick={(e) => e.stopPropagation()} className="w-[32px]">
+          <Table2.Cell
+            onClick={(e) => e.stopPropagation()}
+            className="w-[32px]"
+          >
             <Actionables forceDropdown={forceDropdown} actions={actions} />
-          </Table.Cell>
+          </Table2.Cell>
         )}
       </tr>
     )
   }
 )
 
-export default Table
+export default Table2

@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import Button from "../../../../components/fundamentals/button"
-import InputField from "../../../../components/molecules/input"
+import QuantityCell from "../../../../components/molecules/ms-input-number"
 import Modal from "../../../../components/molecules/modal"
 import useNotification from "../../../../hooks/use-notification"
 
@@ -72,12 +72,12 @@ const EditUserInformationModal = ({ user, open, onClose }: Props) => {
         <Modal.Content>
           <div className="gap-y-base flex flex-col">
             <div className="gap-x-base grid grid-cols-2">
-              <InputField
+              <QuantityCell
                 {...register("first_name")}
                 errors={errors}
                 label="First name"
               />
-              <InputField
+              <QuantityCell
                 {...register("last_name")}
                 errors={errors}
                 label="Last name"
