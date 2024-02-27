@@ -44,7 +44,7 @@ const Tooltip = ({
           align="center"
           className={clsx(
             "inter-small-semibold text-grey-50 z-[999]",
-            "bg-grey-0 shadow-dropdown rounded-rounded py-2 px-3",
+            "bg-grey-0 shadow-dropdown rounded-rounded px-3 py-2",
             "border-grey-20 border border-solid",
             className
           )}

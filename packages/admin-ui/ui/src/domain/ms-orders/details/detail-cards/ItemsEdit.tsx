@@ -32,7 +32,7 @@ const ItemsEdit = (props: SummaryCardProps) => {
   const [note, setNote] = useState<string | undefined>()
   const [showFilter, setShowFilter] = useState(false)
   const [filterTerm, setFilterTerm] = useState<string>("")
-  const [isUpdate, setIsUpdate] = useState(false)
+  const [isUpdate, setIsUpdate] = useState(true)
   const {
     mutateAsync: requestConfirmation,
     isLoading: isRequestingConfirmation,
@@ -77,7 +77,7 @@ const ItemsEdit = (props: SummaryCardProps) => {
   }
 
   return (
-    <div className="">
+    <div className="rounded-lg border">
       {true && (
         <Table className=" ">
           <Table.Head className=" ">
@@ -134,11 +134,12 @@ const ItemsEdit = (props: SummaryCardProps) => {
                     X
                   </Table.Cell>
                   <Table.Cell className="flex flex-col items-center text-center ">
-                    {isUpdate ? (
+                    <QuantityCell quantity={item?.quantity} />
+                    {/* {isUpdate ? (
                       <QuantityCell quantity={item?.quantity} />
                     ) : (
                       <p className="text-large">{item?.quantity}</p>
-                    )}
+                    )} */}
                   </Table.Cell>
                   <Table.Cell>
                     <div className="flex items-center justify-center gap-3">
