@@ -29,10 +29,9 @@ function OrderEditProvider(props: OrderEditProviderProps) {
 
   // TODO: sort by created_at
   const { order_edits, count } = useAdminOrderEdits({
-    order_id: orderId,
+    order_id: "order_01HQQMEQ5D6N5PSD3PAH9VNT1Q", // orderId
     // limit: count, // TODO
   })
-
   useEffect(() => {
     if (!isModalVisible) {
       activeId = undefined

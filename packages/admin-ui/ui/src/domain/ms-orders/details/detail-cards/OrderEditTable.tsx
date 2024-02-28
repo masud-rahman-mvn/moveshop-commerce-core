@@ -22,6 +22,7 @@ import useNotification from "../../../../hooks/use-notification"
 import QuantityCell from "../../../../components/molecules/ms-table/ms-quantity-cell"
 import { OrderEditContext } from "../../edit/context"
 import { LayeredModalContext } from "../../../../components/molecules/modal/layered-modal"
+import { formatAmountWithSymbol } from "../../../../utils/prices"
 
 type OrderEditModalProps = {
   orderEdit: OrderEdit
@@ -71,7 +72,6 @@ const OrderEditTable = (props: OrderEditModalProps) => {
     orderEdit?.id
   )
 
-  const layeredModalContext = useContext(LayeredModalContext)
 
   const onSave = async () => {
     try {
@@ -95,13 +95,11 @@ const OrderEditTable = (props: OrderEditModalProps) => {
         "error"
       )
     }
-    close()
   }
 
   const onCancel = async () => {
     // NOTE: has to be this order of ops
     await deleteOrderEdit()
-    close()
   }
 
   useEffect(() => {
@@ -167,7 +165,7 @@ const OrderEditTable = (props: OrderEditModalProps) => {
 
   return (
     <div className="mt-6 rounded-lg border ">
-      {true && (
+      {displayItems && (
         <Table className=" m-3">
           <Table.Head>
             <Table.HeadRow>
@@ -217,8 +215,14 @@ const OrderEditTable = (props: OrderEditModalProps) => {
                   <Table.Cell className="text-center ">
                     <div className="flex items-center justify-center gap-3">
                       <div className="flex items-center gap-3">
-                        <span>{currencyCode.toLocaleUpperCase()}</span>
-                        <span>{oi?.unit_price}</span>
+                        <span>{currencyCode?.toUpperCase()}</span>
+                        <span>{oi.unit_price}</span>
+                        {/* {formatAmountWithSymbol({
+                          amount: oi.unit_price,
+                          currency: currencyCode,
+                          tax: oi.includes_tax ? 0 : oi.tax_lines,
+                          digits: 2,
+                        })} */}
                       </div>
                     </div>
                   </Table.Cell>
@@ -231,8 +235,12 @@ const OrderEditTable = (props: OrderEditModalProps) => {
                   <Table.Cell>
                     <div className="flex items-center justify-center gap-3 ">
                       <div className="flex items-center gap-3">
-                        <span>{currencyCode.toLocaleUpperCase()}</span>
-                        <span>{oi?.total}</span>
+                        {formatAmountWithSymbol({
+                          amount: oi.unit_price * oi.quantity,
+                          currency: currencyCode,
+                          tax: oi.includes_tax ? 0 : oi.tax_lines,
+                          digits: 2,
+                        })}
                       </div>
                     </div>
                   </Table.Cell>
@@ -243,11 +251,11 @@ const OrderEditTable = (props: OrderEditModalProps) => {
                       customerId={customerId}
                       regionId={regionId}
                       currencyCode={currencyCode}
-                      // change={orderEdit?.changes?.find(
-                      //   (change) =>
-                      //     change.line_item_id === oi.id ||
-                      //     change.original_line_item_id === oi.id
-                      // )}
+                      change={orderEdit?.changes?.find(
+                        (change) =>
+                          change.line_item_id === oi.id ||
+                          change.original_line_item_id === oi.id
+                      )}
                     />
                   </Table.Cell>
                 </Table.Row>
