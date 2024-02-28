@@ -72,6 +72,7 @@ const OrderEditTable = (props: OrderEditModalProps) => {
     orderEdit?.id
   )
 
+  const layeredModalContext = useContext(LayeredModalContext)
 
   const onSave = async () => {
     try {
@@ -166,10 +167,10 @@ const OrderEditTable = (props: OrderEditModalProps) => {
   return (
     <div className="mt-6 rounded-lg border ">
       {displayItems && (
-        <Table className=" m-3">
-          <Table.Head>
+        <Table className="">
+          <Table.Head className="ml-3 border">
             <Table.HeadRow>
-              <Table.HeadCell>
+              <Table.HeadCell className="ml-3">
                 {t("components-item-name", "Item Name")}
               </Table.HeadCell>
               <Table.HeadCell className=" text-center ">
@@ -182,6 +183,7 @@ const OrderEditTable = (props: OrderEditModalProps) => {
               <Table.HeadCell className="text-center ">
                 {t("components-total-price", "Total Price")}
               </Table.HeadCell>
+              <Table.HeadCell className="text-center "></Table.HeadCell>
             </Table.HeadRow>
           </Table.Head>
           <div className="h-3"></div>

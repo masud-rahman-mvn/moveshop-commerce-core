@@ -75,7 +75,7 @@ const MsSummaryCard: React.FC<SummaryCardProps> = (props: SummaryCardProps) => {
   // console.log("order :>> ", order)
   return (
     <BodyCard
-      className={"my-4 h-auto min-h-0 w-full rounded-lg bg-white p-5 shadow"}
+      className={"my-4 h-auto min-h-0 w-10/12 rounded-lg bg-white p-5 shadow"}
       title="Order Summary"
     >
       <OrderEditTable

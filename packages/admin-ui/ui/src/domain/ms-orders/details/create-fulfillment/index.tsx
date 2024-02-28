@@ -231,7 +231,7 @@ const CreateFulfillmentModal: React.FC<CreateFulfillmentModalProps> = ({
   return (
     <FocusModal>
       <FocusModal.Header>
-        <div className="medium:w-8/12 flex w-full justify-between px-8">
+        <div className="medium:w-full flex w-full justify-between px-8">
           <Button
             size="small"
             variant="ghost"
