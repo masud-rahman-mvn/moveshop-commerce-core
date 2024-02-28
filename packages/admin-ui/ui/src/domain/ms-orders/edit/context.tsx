@@ -29,7 +29,7 @@ function OrderEditProvider(props: OrderEditProviderProps) {
 
   // TODO: sort by created_at
   const { order_edits, count } = useAdminOrderEdits({
-    order_id: "order_01HQQMEQ5D6N5PSD3PAH9VNT1Q", // orderId
+    order_id: orderId,
     // limit: count, // TODO
   })
   useEffect(() => {

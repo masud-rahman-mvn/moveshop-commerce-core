@@ -176,16 +176,7 @@ const OrderEditLine = ({
       onClick: () => push(replaceProductVariantScreen),
       icon: <RefreshIcon size="20" />,
     },
-    {
-      label: t("order-line-request-return", "Request return"),
-      onClick: onDuplicate,
-      icon: <DuplicateIcon size="20" />,
-    },
-    {
-      label: t("order-line-register-claim", "Register claim"),
-      onClick: onDuplicate,
-      icon: <DuplicateIcon size="20" />,
-    },
+
     {
       label: t("order-line-duplicate-item", "Duplicate item"),
       onClick: onDuplicate,
