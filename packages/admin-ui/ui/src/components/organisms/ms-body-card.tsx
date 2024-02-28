@@ -61,7 +61,7 @@ const BodyCard: React.FC<BodyCardProps> = ({
       >
         {/* medium:px-xlarge medium:py-large */}
         <div
-          className={clsx("pt-6", {
+          className={clsx("", {
             "border-grey-20 border-b border-solid": setBorders,
           })}
         >
