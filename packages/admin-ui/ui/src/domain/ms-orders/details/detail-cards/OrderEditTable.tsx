@@ -19,7 +19,7 @@ import {
   useAdminUpdateOrderEdit,
 } from "medusa-react"
 import useNotification from "../../../../hooks/use-notification"
-import QuantityCell from "../../../../components/molecules/ms-quantity-cell"
+import QuantityCell from "../../../../components/molecules/ms-table/ms-quantity-cell"
 import { OrderEditContext } from "../../edit/context"
 import { LayeredModalContext } from "../../../../components/molecules/modal/layered-modal"
 
@@ -226,7 +226,7 @@ const OrderEditTable = (props: OrderEditModalProps) => {
                     X
                   </Table.Cell>
                   <Table.Cell className="flex flex-col items-center text-center ">
-                    <QuantityCell quantity={1} />
+                    <QuantityCell item={oi} currencyCode={currencyCode} />
                   </Table.Cell>
                   <Table.Cell>
                     <div className="flex items-center justify-center gap-3 ">

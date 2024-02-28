@@ -2,29 +2,19 @@ import React, {
   ChangeEventHandler,
   FocusEventHandler,
   MouseEventHandler,
-  useImperativeHandle,
-  useRef,
 } from "react"
 
 import clsx from "clsx"
 import { LineItem, OrderItemChange, ProductVariant } from "@medusajs/medusa"
 import { TriangleDownMini, TriangleUpMini } from "@medusajs/icons"
-import { InputHeaderProps } from "../../fundamentals/input-header"
-import { useTranslation } from "react-i18next"
-import useNotification from "../../../hooks/use-notification"
-import { LayeredModalContext } from "../modal/layered-modal"
+import { InputHeaderProps } from "../../../fundamentals/input-header"
 import {
   useAdminDeleteOrderEditItemChange,
   useAdminOrderEditAddLineItem,
   useAdminOrderEditDeleteLineItem,
   useAdminOrderEditUpdateLineItem,
 } from "medusa-react"
-import { clx } from "../../../utils/clx"
-import { formatAmountWithSymbol } from "../../../utils/prices"
-import RefreshIcon from "../../fundamentals/icons/refresh-icon"
-import DuplicateIcon from "../../fundamentals/icons/duplicate-icon"
-import TrashIcon from "../../fundamentals/icons/trash-icon"
-import { AddProductVariant } from "../../../domain/ms-orders/edit/modal"
+import { clx } from "../../../../utils/clx"
 
 export type InputProps = Omit<React.ComponentPropsWithRef<"input">, "prefix"> &
   InputHeaderProps & {
@@ -43,8 +33,8 @@ export type InputProps = Omit<React.ComponentPropsWithRef<"input">, "prefix"> &
 
 type OrderEditLineProps = {
   item: LineItem
-  customerId: string
-  regionId: string
+  customerId?: string
+  regionId?: string
   currencyCode: string
   change?: OrderItemChange
   className?: string
@@ -62,24 +52,24 @@ const QuantityCell = ({
 }: OrderEditLineProps) => {
   const isNew = change?.type === "item_add"
   const isModified = change?.type === "item_update"
-  const isLocked = !!item.fulfilled_quantity
+  const isLocked = !!item?.fulfilled_quantity
 
   const { mutateAsync: addLineItem } = useAdminOrderEditAddLineItem(
-    item.order_edit_id!
+    item?.order_edit_id!
   )
 
   const { mutateAsync: removeItem } = useAdminOrderEditDeleteLineItem(
-    item.order_edit_id!,
-    item.id
+    item?.order_edit_id!,
+    item?.id
   )
 
   const { mutateAsync: updateItem } = useAdminOrderEditUpdateLineItem(
-    item.order_edit_id!,
-    item.id
+    item?.order_edit_id!,
+    item?.id
   )
 
   const { mutateAsync: undoChange } = useAdminDeleteOrderEditItemChange(
-    item.order_edit_id!,
+    item?.order_edit_id!,
     change?.id as string
   )
 
@@ -99,14 +89,7 @@ const QuantityCell = ({
   return (
     <div className={clsx("w-20 rounded-lg border px-3 py-0.5", className)}>
       <div className="flex items-center justify-between gap-3">
-        <p className="text-large">
-          {formatAmountWithSymbol({
-            amount: item.unit_price * item.quantity,
-            currency: currencyCode,
-            tax: item.includes_tax ? 0 : item.tax_lines,
-            digits: 2,
-          })}
-        </p>
+        <p className="text-large">{item.quantity}</p>
         <div className="flex  flex-col items-center self-end">
           <button
             onClick={() => onQuantityUpdate(item.quantity + 1)}

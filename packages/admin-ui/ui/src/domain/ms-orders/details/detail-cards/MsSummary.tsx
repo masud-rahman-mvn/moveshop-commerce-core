@@ -38,31 +38,31 @@ const MsSummaryCard: React.FC<SummaryCardProps> = (props: SummaryCardProps) => {
   const { hideModal, orderEdits, activeOrderEditId, setActiveOrderEdit } =
     useContext(OrderEditContext)
 
-  console.log("activeOrderEditId :>> ", activeOrderEditId)
-  console.log("orderEdits :>> ", orderEdits)
   const { mutateAsync: createOrderEdit } = useAdminCreateOrderEdit()
+  console.log("orderEdits :>> ", orderEdits)
 
-  const orderEdit = orderEdits?.find((oe) => oe.id === activeOrderEditId)
+  const orderEdit = orderEdits?.find(
+    (oe) => oe.id === "oe_01HQQFBJ6DXCPG3NFFVXTWBPZB"
+  )
+  console.log("orderEdit :>> ", orderEdit)
+  // useEffect(() => {
+  //   if (activeOrderEditId || isRequestRunningFlag) {
+  //     return
+  //   }
 
-  useEffect(() => {
-    if (activeOrderEditId || isRequestRunningFlag) {
-      return
-    }
+  //   isRequestRunningFlag = true
 
-    isRequestRunningFlag = true
-
-    createOrderEdit({ order_id: order.id })
-      .then(({ order_edit }) => setActiveOrderEdit(order_edit.id))
-      .catch(() => {
-        notification(
-          "Error",
-          "There is already an active order edit on this order",
-          "error"
-        )
-        hideModal()
-      })
-      .finally(() => (isRequestRunningFlag = false))
-  }, [activeOrderEditId])
+  //   createOrderEdit({ order_id: order.id })
+  //     .then(({ order_edit }) => setActiveOrderEdit(order_edit.id))
+  //     .catch(() => {
+  //       notification(
+  //         "Error",
+  //         "There is already an active order edit on this order",
+  //         "error"
+  //       )
+  //     })
+  //     .finally(() => (isRequestRunningFlag = false))
+  // }, [activeOrderEditId])
 
   const onClose = () => {
     // setActiveOrderEdit(undefined) -> context will unset active edit after flag toggle
