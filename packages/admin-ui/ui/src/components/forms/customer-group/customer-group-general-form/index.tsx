@@ -1,6 +1,6 @@
 import FormValidator from "../../../../utils/form-validator"
 import { NestedForm } from "../../../../utils/nested-form"
-import QuantityCell from "../../../molecules/ms-input-number"
+import InputField from "../../../molecules/input"
 
 export type CustomerGroupGeneralFormType = {
   name: string
@@ -21,7 +21,7 @@ export const CustomerGroupGeneralForm = ({
 
   return (
     <div>
-      <QuantityCell
+      <InputField
         label="Name"
         required
         {...register(path("name"), {

@@ -12,7 +12,7 @@ import Spinner from "../../atoms/spinner"
 import ArrowRightIcon from "../../fundamentals/icons/arrow-right-icon"
 import CheckIcon from "../../fundamentals/icons/check-icon"
 import ChevronUpIcon from "../../fundamentals/icons/chevron-up"
-import QuantityCell from "../ms-input-number"
+import InputField from "../input"
 
 const DAY_IN_SECONDS = 86400
 
@@ -423,7 +423,7 @@ const DateFilter = ({
       case DateFilters.OlderThan:
         return (
           <div className="flex w-full flex-col">
-            <QuantityCell
+            <InputField
               className="pb-1 pt-0"
               type="number"
               placeholder="2"

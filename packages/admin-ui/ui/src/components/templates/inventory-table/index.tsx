@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next"
 
 import Button from "../../fundamentals/button"
 import ImagePlaceholder from "../../fundamentals/image-placeholder"
-import QuantityCell from "../../molecules/ms-input-number"
+import InputField from "../../molecules/input"
 import InputHeader from "../../fundamentals/input-header"
 import Modal from "../../molecules/modal"
 import { NextSelect } from "../../molecules/select/next-select"
@@ -464,7 +464,7 @@ const AdjustAvailabilityModal = ({
                   </div>
                 </span>
               </div>
-              <QuantityCell
+              <InputField
                 onChange={(e) => setStockedQuantity(e.target.valueAsNumber)}
                 autoFocus
                 type="number"

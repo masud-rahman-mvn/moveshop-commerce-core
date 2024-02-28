@@ -4,7 +4,7 @@ import { Option } from "../../types/shared"
 import FormValidator from "../../utils/form-validator"
 import { nestedForm, NestedForm } from "../../utils/nested-form"
 import MetadataForm, { MetadataFormType } from "../forms/general/metadata-form"
-import Input from "../molecules/ms-input-number"
+import Input from "../molecules/input"
 import { NextSelect } from "../molecules/select/next-select"
 
 export type AddressPayload = {

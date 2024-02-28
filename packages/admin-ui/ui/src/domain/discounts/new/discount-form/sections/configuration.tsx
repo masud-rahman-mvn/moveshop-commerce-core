@@ -7,7 +7,7 @@ import DatePicker from "../../../../../components/atoms/date-picker/date-picker"
 import TimePicker from "../../../../../components/atoms/date-picker/time-picker"
 import Switch from "../../../../../components/atoms/switch"
 import AvailabilityDuration from "../../../../../components/molecules/availability-duration"
-import QuantityCell from "../../../../../components/molecules/ms-input-number"
+import InputField from "../../../../../components/molecules/input"
 import Accordion from "../../../../../components/organisms/accordion"
 import { useDiscountForm } from "../form/discount-form-context"
 
@@ -207,7 +207,7 @@ const Settings: React.FC<SettingsProps> = ({ promotion, isEdit = false }) => {
                   "mt-4": openItems.indexOf("usage_limit") > -1,
                 })}
               >
-                <QuantityCell
+                <InputField
                   {...register("usage_limit", { valueAsNumber: true })}
                   label={t(
                     "sections-number-of-redemptions",

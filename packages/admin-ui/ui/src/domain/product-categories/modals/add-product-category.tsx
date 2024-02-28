@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next"
 import { useQueryClient } from "@tanstack/react-query"
 import Button from "../../../components/fundamentals/button"
 import CrossIcon from "../../../components/fundamentals/icons/cross-icon"
-import QuantityCell from "../../../components/molecules/ms-input-number"
+import InputField from "../../../components/molecules/input"
 import TextArea from "../../../components/molecules/textarea"
 import FocusModal from "../../../components/molecules/modal/focus-modal"
 import { NextSelect } from "../../../components/molecules/select/next-select"
@@ -176,7 +176,7 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
           </h4>
 
           <div className="mb-8 flex justify-between gap-6">
-            <QuantityCell
+            <InputField
               required
               label={t("modals-name", "Name") as string}
               type="string"
@@ -190,7 +190,7 @@ function CreateProductCategory(props: CreateProductCategoryProps) {
               {...register("name", { required: true })}
             />
 
-            <QuantityCell
+            <InputField
               label={t("modals-handle", "Handle") as string}
               type="string"
               className="w-[338px]"

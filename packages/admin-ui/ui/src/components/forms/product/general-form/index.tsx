@@ -1,6 +1,6 @@
 import FormValidator from "../../../../utils/form-validator"
 import { NestedForm } from "../../../../utils/nested-form"
-import QuantityCell from "../../../molecules/ms-input-number"
+import InputField from "../../../molecules/input"
 import TextArea from "../../../molecules/textarea"
 
 export type GeneralFormType = {
@@ -27,7 +27,7 @@ const GeneralForm = ({ form, requireHandle = true, isGiftCard }: Props) => {
   return (
     <div>
       <div className="gap-x-large mb-small grid grid-cols-2">
-        <QuantityCell
+        <InputField
           label="Title"
           placeholder={isGiftCard ? "Gift Card" : "Winter Jacket"}
           required
@@ -41,7 +41,7 @@ const GeneralForm = ({ form, requireHandle = true, isGiftCard }: Props) => {
           })}
           errors={errors}
         />
-        <QuantityCell
+        <InputField
           label="Subtitle"
           placeholder="Warm and cozy..."
           {...register(path("subtitle"), {
@@ -57,7 +57,7 @@ const GeneralForm = ({ form, requireHandle = true, isGiftCard }: Props) => {
         50-60 characters is the recommended length for search engines.
       </p>
       <div className="gap-x-large mb-large grid grid-cols-2">
-        <QuantityCell
+        <InputField
           label="Handle"
           tooltipContent={
             !requireHandle
@@ -76,7 +76,7 @@ const GeneralForm = ({ form, requireHandle = true, isGiftCard }: Props) => {
           prefix="/"
           errors={errors}
         />
-        <QuantityCell
+        <InputField
           label="Material"
           placeholder={isGiftCard ? "Paper" : "100% Cotton"}
           {...register(path("material"), {

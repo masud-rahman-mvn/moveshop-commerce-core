@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next"
 
 import Button from "../../../components/fundamentals/button"
 import CrossIcon from "../../../components/fundamentals/icons/cross-icon"
-import QuantityCell from "../../../components/molecules/ms-input-number"
+import InputField from "../../../components/molecules/input"
 import TextArea from "../../../components/molecules/textarea"
 import SideModal from "../../../components/molecules/modal/side-modal"
 import { NextSelect } from "../../../components/molecules/select/next-select"
@@ -154,7 +154,7 @@ function EditProductCategoriesSideModal(
         )}
 
         <div className="flex-grow px-6">
-          <QuantityCell
+          <InputField
             required
             label={t("modals-name", "Name") as string}
             type="string"
@@ -168,7 +168,7 @@ function EditProductCategoriesSideModal(
             {...register("name", { required: true })}
           />
 
-          <QuantityCell
+          <InputField
             label={t("modals-handle", "Handle") as string}
             className="my-6"
             type="string"

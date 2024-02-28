@@ -19,7 +19,7 @@ import OrderEditLine from "../details/order-line/edit"
 import VariantsTable from "./variants-table"
 import SearchIcon from "../../../components/fundamentals/icons/search-icon"
 import { formatAmountWithSymbol } from "../../../utils/prices"
-import QuantityCell from "../../../components/molecules/ms-input-number"
+import InputField from "../../../components/molecules/input"
 import useNotification from "../../../hooks/use-notification"
 import { OrderEditContext } from "./context"
 
@@ -330,7 +330,7 @@ function OrderEditModal(props: OrderEditModalProps) {
                 </Button>
               )}
               {showFilter && (
-                <QuantityCell
+                <InputField
                   small
                   deletable
                   ref={filterRef}
@@ -379,7 +379,7 @@ function OrderEditModal(props: OrderEditModalProps) {
           {hasChanges && (
             <div className="flex items-center justify-between">
               <span className="text-gray-500">{t("edit-note", "Note")}</span>
-              <QuantityCell
+              <InputField
                 className="max-w-[455px]"
                 placeholder={t("edit-add-a-note", "Add a note...")}
                 onChange={(e) => setNote(e.target.value)}

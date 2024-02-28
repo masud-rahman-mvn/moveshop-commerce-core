@@ -13,7 +13,7 @@ import EditIcon from "../../../fundamentals/icons/edit-icon"
 import GripIcon from "../../../fundamentals/icons/grip-icon"
 import MoreHorizontalIcon from "../../../fundamentals/icons/more-horizontal-icon"
 import Actionables, { ActionType } from "../../../molecules/actionables"
-import QuantityCell from "../../../molecules/ms-input-number"
+import InputField from "../../../molecules/input"
 import { LayeredModalContext } from "../../../molecules/modal/layered-modal"
 import { useEditVariantScreen } from "./edit-variant-screen"
 
@@ -140,7 +140,7 @@ export const VariantCard = ({
         {ean && <span className="inter-base-regular text-grey-50">{ean}</span>}
       </div>
       <div className="flex items-center justify-end text-right">
-        <QuantityCell
+        <InputField
           {...register(`variants.${index}.inventory_quantity`, {
             min: FormValidator.nonNegativeNumberRule("Inventory"),
             valueAsNumber: true,

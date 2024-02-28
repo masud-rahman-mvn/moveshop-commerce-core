@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import Button from "../../fundamentals/button"
 import DiscordIcon from "../../fundamentals/icons/discord-icon"
-import QuantityCell from "../../molecules/ms-input-number"
+import InputField from "../../molecules/input"
 import TextArea from "../../molecules/textarea"
 
 import * as Dialog from "@radix-ui/react-dialog"
@@ -40,7 +40,7 @@ const MailDialog = ({ open, onClose }: MailDialogProps) => {
                 "We usually respond in a few hours"
               )}
             </Dialog.Description>
-            <QuantityCell
+            <InputField
               label={t("help-dialog-subject", "Subject")}
               value={subject}
               className="mb-4"

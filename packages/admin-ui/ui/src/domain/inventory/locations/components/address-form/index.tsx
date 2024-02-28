@@ -4,7 +4,7 @@ import { useAdminRegions } from "medusa-react"
 import { useEffect, useMemo, useState } from "react"
 import { Controller, useWatch } from "react-hook-form"
 import { useTranslation } from "react-i18next"
-import QuantityCell from "../../../../../components/molecules/ms-input-number"
+import InputField from "../../../../../components/molecules/input"
 import { NextSelect } from "../../../../../components/molecules/select/next-select"
 import FormValidator from "../../../../../utils/form-validator"
 import { NestedForm } from "../../../../../utils/nested-form"
@@ -66,7 +66,7 @@ const AddressForm = ({
       </span>
       <div className="gap-y-large gap-x-large grid grid-cols-1">
         <div className="gap-x-large grid grid-cols-2">
-          <QuantityCell
+          <InputField
             label={t("address-form-company", "Company")}
             placeholder={t("address-form-company", "Company")}
             errors={errors}
@@ -76,7 +76,7 @@ const AddressForm = ({
           />
         </div>
         <div className="gap-x-large grid grid-cols-2">
-          <QuantityCell
+          <InputField
             label={t("address-form-address-1", "Address 1")}
             placeholder={t("address-form-address-1", "Address 1")}
             errors={errors}
@@ -91,7 +91,7 @@ const AddressForm = ({
                 : undefined,
             })}
           />
-          <QuantityCell
+          <InputField
             label={t("address-form-address-2", "Address 2")}
             placeholder={t("address-form-address-2", "Address 2")}
             errors={errors}
@@ -101,7 +101,7 @@ const AddressForm = ({
           />
         </div>
         <div className="gap-x-large grid grid-cols-2">
-          <QuantityCell
+          <InputField
             label={t("address-form-postal-code", "Postal code")}
             placeholder={t("address-form-postal-code", "Postal code")}
             errors={errors}
@@ -109,7 +109,7 @@ const AddressForm = ({
               pattern: FormValidator.whiteSpaceRule("Postal code"),
             })}
           />
-          <QuantityCell
+          <InputField
             label={t("address-form-city", "City")}
             placeholder={t("address-form-city", "City")}
             errors={errors}

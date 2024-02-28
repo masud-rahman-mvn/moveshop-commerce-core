@@ -2,7 +2,7 @@ import { Controller } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import Switch from "../../../../../components/atoms/switch"
 import FeatureToggle from "../../../../../components/fundamentals/feature-toggle"
-import QuantityCell from "../../../../../components/molecules/ms-input-number"
+import InputField from "../../../../../components/molecules/input"
 import { NextSelect } from "../../../../../components/molecules/select/next-select"
 import { Option } from "../../../../../types/shared"
 import FormValidator from "../../../../../utils/form-validator"
@@ -36,7 +36,7 @@ const RegionDetailsForm = ({ form, isCreate = false }: Props) => {
   return (
     <div>
       <div className="gap-large grid grid-cols-2">
-        <QuantityCell
+        <InputField
           label={t("region-form-title", "Title")}
           placeholder={t("region-form-europe", "Europe")}
           required
@@ -75,7 +75,7 @@ const RegionDetailsForm = ({ form, isCreate = false }: Props) => {
         />
         {isCreate && (
           <>
-            <QuantityCell
+            <InputField
               label={t("region-form-default-tax-rate", "Default Tax Rate")}
               required
               placeholder="25"
@@ -101,7 +101,7 @@ const RegionDetailsForm = ({ form, isCreate = false }: Props) => {
               })}
               errors={errors}
             />
-            <QuantityCell
+            <InputField
               label={t("region-form-default-tax-code", "Default Tax Code")}
               placeholder="1000"
               {...register(path("tax_code"))}

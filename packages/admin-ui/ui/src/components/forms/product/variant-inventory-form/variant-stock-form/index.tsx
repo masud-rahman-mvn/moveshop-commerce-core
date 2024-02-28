@@ -8,7 +8,7 @@ import Button from "../../../../fundamentals/button"
 import CustomsForm, { CustomsFormType } from "../../customs-form"
 import DimensionsForm, { DimensionsFormType } from "../../dimensions-form"
 import IconBadge from "../../../../fundamentals/icon-badge"
-import QuantityCell from "../../../../molecules/ms-input-number"
+import InputField from "../../../../molecules/input"
 import Modal from "../../../../molecules/modal"
 import Switch from "../../../../atoms/switch"
 import { useAdminStockLocations } from "medusa-react"
@@ -94,22 +94,22 @@ const VariantStockForm = ({ form, locationLevels }: Props) => {
         <div className="gap-y-xlarge mt-large flex flex-col">
           <div className="flex flex-col gap-y-4">
             <div className="gap-large grid grid-cols-2">
-              <QuantityCell
+              <InputField
                 label="Stock keeping unit (SKU)"
                 placeholder="SUN-G, JK1234..."
                 {...register("sku")}
               />
-              <QuantityCell
+              <InputField
                 label="EAN (Barcode)"
                 placeholder="123456789102..."
                 {...register("ean")}
               />
-              <QuantityCell
+              <InputField
                 label="UPC (Barcode)"
                 placeholder="023456789104..."
                 {...register("upc")}
               />
-              <QuantityCell
+              <InputField
                 label="Barcode"
                 placeholder="123456789104..."
                 {...register("barcode")}
@@ -192,7 +192,7 @@ const VariantStockForm = ({ form, locationLevels }: Props) => {
                                 locationLevel!.reserved_quantity!
                               } available`}</span>
                             </div>
-                            <QuantityCell
+                            <InputField
                               placeholder={"0"}
                               type="number"
                               min={0}

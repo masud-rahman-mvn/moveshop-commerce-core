@@ -20,7 +20,7 @@ import { useTranslation } from "react-i18next"
 
 import Button from "../../../../components/fundamentals/button"
 import CrossIcon from "../../../../components/fundamentals/icons/cross-icon"
-import QuantityCell from "../../../../components/molecules/ms-input-number"
+import InputField from "../../../../components/molecules/input"
 import { LineItem } from "@medusajs/medusa"
 import { ReserveLineItemForm } from "./reserve-items-modal"
 import Select from "../../../../components/molecules/select/next-select/select"
@@ -347,7 +347,7 @@ const EditReservationDrawer = ({
                       "What type of reservation is this?"
                     )}
                   </p>
-                  <QuantityCell
+                  <InputField
                     {...register("item.description")}
                     placeholder={t("reservation-description", "Description")}
                   />

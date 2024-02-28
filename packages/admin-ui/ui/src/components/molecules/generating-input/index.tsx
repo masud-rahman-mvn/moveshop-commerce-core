@@ -8,7 +8,7 @@ import { generatePromotionCode } from "../../../utils/generate-promotion-code"
 import RefreshIcon from "../../fundamentals/icons/refresh-icon"
 import InputContainer from "../../fundamentals/input-container"
 import InputHeader from "../../fundamentals/input-header"
-import { InputProps } from "../ms-input-number"
+import { InputProps } from "../input"
 
 const GeneratingInput = React.forwardRef(
   (

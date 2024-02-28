@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import Button from "../../fundamentals/button"
 import PlusIcon from "../../fundamentals/icons/plus-icon"
 import TrashIcon from "../../fundamentals/icons/trash-icon"
-import QuantityCell from "../../molecules/ms-input-number"
+import InputField from "../../molecules/input"
 
 type AddMetadataProps = {
   metadata: MetadataField[]
@@ -99,7 +99,7 @@ const Field: React.FC<FieldProps> = ({ field, updateKey, updateValue }) => {
   return (
     <div className="gap-x-xsmall flex w-full items-center">
       <div className="maw-w-[200px]">
-        <QuantityCell
+        <InputField
           label="Key"
           placeholder="Some key"
           defaultValue={field.key}
@@ -109,7 +109,7 @@ const Field: React.FC<FieldProps> = ({ field, updateKey, updateValue }) => {
         />
       </div>
       <div className="flex-grow">
-        <QuantityCell
+        <InputField
           label="Value"
           placeholder="Some value"
           defaultValue={field.value}

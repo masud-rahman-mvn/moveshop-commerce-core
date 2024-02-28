@@ -5,7 +5,7 @@ import { Controller, useWatch } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import Checkbox from "../../../../../components/atoms/checkbox"
 import IconTooltip from "../../../../../components/molecules/icon-tooltip"
-import QuantityCell from "../../../../../components/molecules/ms-input-number"
+import InputField from "../../../../../components/molecules/input"
 import { NextSelect } from "../../../../../components/molecules/select/next-select"
 import TextArea from "../../../../../components/molecules/textarea"
 import CurrencyInput from "../../../../../components/organisms/currency-input"
@@ -89,7 +89,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
             }}
           />
           <div className="gap-x-base gap-y-base my-base flex">
-            <QuantityCell
+            <InputField
               label={t("sections-code", "Code")}
               className="flex-1"
               placeholder={t("sections-summersale-10", "SUMMERSALE10")}
@@ -134,7 +134,7 @@ const General: React.FC<GeneralProps> = ({ discount }) => {
                   </div>
                 ) : (
                   <div className="flex-1">
-                    <QuantityCell
+                    <InputField
                       label={t("sections-percentage", "Percentage")}
                       min={0}
                       required

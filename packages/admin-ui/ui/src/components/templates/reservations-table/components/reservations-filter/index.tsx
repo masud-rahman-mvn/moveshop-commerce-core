@@ -12,7 +12,7 @@ import CalendarIcon from "../../../../fundamentals/icons/calendar-icon"
 import CheckIcon from "../../../../fundamentals/icons/check-icon"
 import CrossIcon from "../../../../fundamentals/icons/cross-icon"
 import FilterDropdownContainer from "../../../../molecules/filter-dropdown/container"
-import QuantityCell from "../../../../molecules/ms-input-number"
+import InputField from "../../../../molecules/input"
 import Spinner from "../../../../atoms/spinner"
 import Switch from "../../../../atoms/switch"
 import TagDotIcon from "../../../../fundamentals/icons/tag-dot-icon"
@@ -213,7 +213,7 @@ const SearchableFilterInventoryItem = ({
         }}
       >
         <div className="gap-y-xsmall mb-2 flex w-full flex-col pt-2">
-          <QuantityCell
+          <InputField
             value={query}
             className="pr-1"
             prefix={
@@ -368,7 +368,7 @@ const CreatedByFilterItem = ({
         }}
       >
         <div className="gap-y-xsmall mb-2 flex w-full flex-col pt-2">
-          <QuantityCell
+          <InputField
             value={query}
             placeholder="Find user"
             onChange={(e) => setQuery(e.target.value)}
@@ -488,7 +488,7 @@ const TextFilterItem = ({
             value={filterType}
             onChange={selectFilterType}
           />
-          <QuantityCell
+          <InputField
             value={fieldValue?.[filterType.value]}
             placeholder="Write something"
             onChange={(e) => updateFieldValue(e.target.value)}
@@ -610,7 +610,7 @@ const NumberFilterItem = ({
             onChange={selectFilterType}
           />
           <div className="flex items-center gap-x-2">
-            <QuantityCell
+            <InputField
               value={getLowerBoundValue()}
               placeholder="0"
               type="number"
@@ -619,7 +619,7 @@ const NumberFilterItem = ({
             {filterType.value === "between" && (
               <>
                 <span>-</span>
-                <QuantityCell
+                <InputField
                   value={upperBound ?? undefined}
                   placeholder="0"
                   type="number"

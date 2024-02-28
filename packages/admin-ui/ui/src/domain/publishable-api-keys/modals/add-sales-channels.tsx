@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next"
 import SideModal from "../../../components/molecules/modal/side-modal"
 import Button from "../../../components/fundamentals/button"
 import CrossIcon from "../../../components/fundamentals/icons/cross-icon"
-import QuantityCell from "../../../components/molecules/ms-input-number"
+import InputField from "../../../components/molecules/input"
 import SearchIcon from "../../../components/fundamentals/icons/search-icon"
 import SalesChannelTable from "../tables/sales-channels-table"
 
@@ -93,7 +93,7 @@ function AddSalesChannelsSideModal(props: AddSalesChannelsSideModalProps) {
 
         <div className="flex-grow">
           <div className="my-6">
-            <QuantityCell
+            <InputField
               small
               name="name"
               type="string"

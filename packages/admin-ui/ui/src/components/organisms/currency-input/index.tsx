@@ -16,7 +16,7 @@ import Tooltip from "../../atoms/tooltip"
 import MinusIcon from "../../fundamentals/icons/minus-icon"
 import PlusIcon from "../../fundamentals/icons/plus-icon"
 import InputHeader from "../../fundamentals/input-header"
-import Input from "../../molecules/ms-input-number"
+import Input from "../../molecules/input"
 import Select from "../../molecules/select"
 import { useTranslation } from "react-i18next"
 

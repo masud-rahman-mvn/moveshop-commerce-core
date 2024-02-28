@@ -1,6 +1,6 @@
 import FormValidator from "../../../../utils/form-validator"
 import { NestedForm } from "../../../../utils/nested-form"
-import QuantityCell from "../../../molecules/ms-input-number"
+import InputField from "../../../molecules/input"
 
 export type DimensionsFormType = {
   length: number | null
@@ -27,7 +27,7 @@ const DimensionsForm = ({ form }: DimensionsFormProps) => {
 
   return (
     <div className="gap-x-large grid grid-cols-4">
-      <QuantityCell
+      <InputField
         label="Width"
         placeholder="100..."
         type="number"
@@ -37,7 +37,7 @@ const DimensionsForm = ({ form }: DimensionsFormProps) => {
         })}
         errors={errors}
       />
-      <QuantityCell
+      <InputField
         label="Length"
         placeholder="100..."
         type="number"
@@ -47,7 +47,7 @@ const DimensionsForm = ({ form }: DimensionsFormProps) => {
         })}
         errors={errors}
       />
-      <QuantityCell
+      <InputField
         label="Height"
         placeholder="100..."
         type="number"
@@ -57,7 +57,7 @@ const DimensionsForm = ({ form }: DimensionsFormProps) => {
         })}
         errors={errors}
       />
-      <QuantityCell
+      <InputField
         label="Weight"
         placeholder="100..."
         type="number"

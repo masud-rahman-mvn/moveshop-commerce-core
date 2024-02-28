@@ -3,7 +3,7 @@ import { Option } from "../../../../types/shared"
 import { countries } from "../../../../utils/countries"
 import FormValidator from "../../../../utils/form-validator"
 import { NestedForm } from "../../../../utils/nested-form"
-import QuantityCell from "../../../molecules/ms-input-number"
+import InputField from "../../../molecules/input"
 import { NextSelect } from "../../../molecules/select/next-select"
 
 export type CustomsFormType = {
@@ -36,7 +36,7 @@ const CustomsForm = ({ form }: CustomsFormProps) => {
 
   return (
     <div className="gap-large pb-2xsmall grid grid-cols-2">
-      <QuantityCell
+      <InputField
         label="MID Code"
         placeholder="XDSKLAD9999..."
         {...register(path("mid_code"), {
@@ -44,7 +44,7 @@ const CustomsForm = ({ form }: CustomsFormProps) => {
         })}
         errors={errors}
       />
-      <QuantityCell
+      <InputField
         label="HS Code"
         placeholder="BDJSK39277W..."
         {...register(path("hs_code"), {

@@ -10,7 +10,7 @@ import MetadataForm, {
 } from "../../../components/forms/general/metadata-form"
 import Button from "../../../components/fundamentals/button"
 import LockIcon from "../../../components/fundamentals/icons/lock-icon"
-import QuantityCell from "../../../components/molecules/ms-input-number"
+import InputField from "../../../components/molecules/input"
 import Modal from "../../../components/molecules/modal"
 import useNotification from "../../../hooks/use-notification"
 import { getErrorMessage } from "../../../utils/error-messages"
@@ -104,12 +104,12 @@ const EditCustomerModal = ({
                 {t("details-general", "General")}
               </h2>
               <div className="flex w-full space-x-2">
-                <QuantityCell
+                <InputField
                   label={t("details-first-name", "First Name")}
                   {...register("first_name")}
                   placeholder={t("details-lebron", "Lebron")}
                 />
-                <QuantityCell
+                <InputField
                   label={t("details-last-name", "Last Name")}
                   {...register("last_name")}
                   placeholder={t("details-james", "James")}
@@ -119,7 +119,7 @@ const EditCustomerModal = ({
             <div>
               <h2 className="inter-base-semibold text-grey-90 mb-4">Contact</h2>
               <div className="flex space-x-2">
-                <QuantityCell
+                <InputField
                   label={t("details-email", "Email")}
                   {...register("email", {
                     validate: (value) => !!validateEmail(value),
@@ -132,7 +132,7 @@ const EditCustomerModal = ({
                   }
                   disabled={customer.has_account}
                 />
-                <QuantityCell
+                <InputField
                   label={t("details-phone-number", "Phone number")}
                   {...register("phone")}
                   placeholder="+45 42 42 42 42"

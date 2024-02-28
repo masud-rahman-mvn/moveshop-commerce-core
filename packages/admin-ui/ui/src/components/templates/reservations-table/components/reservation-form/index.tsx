@@ -2,7 +2,7 @@ import Button from "../../../../fundamentals/button"
 import { Controller } from "react-hook-form"
 import { DecoratedInventoryItemDTO } from "@medusajs/medusa"
 import { useTranslation } from "react-i18next"
-import QuantityCell from "../../../../molecules/ms-input-number"
+import InputField from "../../../../molecules/input"
 import ItemSearch from "../../../../molecules/item-search"
 import LocationDropdown from "../../../../molecules/location-dropdown"
 import { NestedForm } from "../../../../../utils/nested-form"
@@ -160,7 +160,7 @@ const ReservationForm: React.FC<Props> = ({ form }) => {
             )}
           </p>
         </div>
-        <QuantityCell
+        <InputField
           {...register(path("description"))}
           placeholder={t("reservation-form-description", "Description")}
         />

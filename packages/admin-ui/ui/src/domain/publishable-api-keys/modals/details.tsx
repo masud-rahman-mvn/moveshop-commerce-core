@@ -4,7 +4,7 @@ import { PublishableApiKey } from "@medusajs/medusa"
 import { useTranslation } from "react-i18next"
 
 import Button from "../../../components/fundamentals/button"
-import QuantityCell from "../../../components/molecules/ms-input-number"
+import InputField from "../../../components/molecules/input"
 import SideModal from "../../../components/molecules/modal/side-modal"
 import CrossIcon from "../../../components/fundamentals/icons/cross-icon"
 import { useAdminUpdatePublishableApiKey } from "medusa-react"
@@ -78,7 +78,7 @@ function DetailsModal(props: DetailsModalProps) {
         {/* === BODY === */}
 
         <div className="flex-grow">
-          <QuantityCell
+          <InputField
             label={t("modals-title", "Title")}
             type="string"
             name="name"

@@ -7,7 +7,7 @@ import { useAdminCreateAnalyticsConfig } from "../../../services/analytics"
 import { getErrorMessage } from "../../../utils/error-messages"
 import { nestedForm } from "../../../utils/nested-form"
 import Button from "../../fundamentals/button"
-import QuantityCell from "../../molecules/ms-input-number"
+import InputField from "../../molecules/input"
 import FocusModal from "../../molecules/modal/focus-modal"
 import AnalyticsConfigForm, {
   AnalyticsConfigFormType,
@@ -110,7 +110,7 @@ const AnalyticsPreferencesModal = () => {
               .
             </p>
             <div className="mt-xlarge gap-y-xlarge flex flex-col">
-              <QuantityCell
+              <InputField
                 label={"Email"}
                 placeholder="you@company.com"
                 disabled={watchOptOut || watchAnonymize}

@@ -1,7 +1,7 @@
 import { trim } from "lodash"
 import React from "react"
 import Button from "../../fundamentals/button"
-import QuantityCell from "../ms-input-number"
+import InputField from "../input"
 
 type SaveFilterItemProps = {
   saveFilter: () => void
@@ -27,7 +27,7 @@ const SaveFilterItem: React.FC<SaveFilterItemProps> = ({
 
   return (
     <div className="mt-2 flex w-full">
-      <QuantityCell
+      <InputField
         className="max-w-[172px] pb-1 pt-0"
         placeholder="Name your filter..."
         onChange={(e) => setName(e.target.value)}

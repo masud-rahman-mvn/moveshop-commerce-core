@@ -2,7 +2,7 @@ import { Controller } from "react-hook-form"
 import { Option } from "../../../../types/shared"
 import FormValidator from "../../../../utils/form-validator"
 import { NestedForm } from "../../../../utils/nested-form"
-import QuantityCell from "../../../molecules/ms-input-number"
+import InputField from "../../../molecules/input"
 import { NextSelect } from "../../../molecules/select/next-select"
 
 export type AddressLocationFormType = {
@@ -38,7 +38,7 @@ const AddressLocationForm = ({
 
   return (
     <div className="gap-large grid grid-cols-2">
-      <QuantityCell
+      <InputField
         {...register(path("address_1"), {
           required: requireFields?.address_1
             ? FormValidator.required("Address 1")
@@ -50,7 +50,7 @@ const AddressLocationForm = ({
         required={requireFields?.address_1}
         errors={errors}
       />
-      <QuantityCell
+      <InputField
         {...register(path("address_2"), {
           pattern: FormValidator.whiteSpaceRule("Address 2"),
           required: requireFields?.address_2
@@ -62,7 +62,7 @@ const AddressLocationForm = ({
         label="Address 2"
         errors={errors}
       />
-      <QuantityCell
+      <InputField
         {...register(path("postal_code"), {
           required: requireFields?.postal_code
             ? FormValidator.required("Postal code")
@@ -75,7 +75,7 @@ const AddressLocationForm = ({
         autoComplete="off"
         errors={errors}
       />
-      <QuantityCell
+      <InputField
         placeholder="City"
         label="City"
         {...register(path("city"), {
@@ -87,7 +87,7 @@ const AddressLocationForm = ({
         required={requireFields?.city}
         errors={errors}
       />
-      <QuantityCell
+      <InputField
         {...register(path("province"), {
           pattern: FormValidator.whiteSpaceRule("Province"),
           required: requireFields?.province

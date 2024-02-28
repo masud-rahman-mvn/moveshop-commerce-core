@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 
 import FeatureToggle from "../../../../components/fundamentals/feature-toggle"
 import ImagePlaceholder from "../../../../components/fundamentals/image-placeholder"
-import QuantityCell from "../../../../components/molecules/ms-input-number"
+import InputField from "../../../../components/molecules/input"
 import { LineItem } from "@medusajs/medusa"
 import clsx from "clsx"
 import { useAdminVariantsInventory } from "medusa-react"
@@ -204,7 +204,7 @@ const FulfillmentLine = ({
             </div>
           )}
         </FeatureToggle>
-        <QuantityCell
+        <InputField
           type="number"
           name={`quantity`}
           defaultValue={getFulfillableQuantity(item)}

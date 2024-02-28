@@ -6,7 +6,7 @@ import useNotification from "../../../hooks/use-notification"
 import { Role } from "../../../types/shared"
 import { getErrorMessage } from "../../../utils/error-messages"
 import Button from "../../fundamentals/button"
-import QuantityCell from "../../molecules/ms-input-number"
+import InputField from "../../molecules/input"
 import Modal from "../../molecules/modal"
 import { NextSelect } from "../../molecules/select/next-select"
 
@@ -76,7 +76,7 @@ const InviteModal: React.FC<InviteModalProps> = ({ handleClose }) => {
           </Modal.Header>
           <Modal.Content>
             <div className="gap-y-base flex flex-col">
-              <QuantityCell
+              <InputField
                 label={t("invite-modal-email", "Email")}
                 placeholder="lebron@james.com"
                 required

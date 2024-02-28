@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next"
 import FormValidator from "../../../../../utils/form-validator"
-import QuantityCell from "../../../../../components/molecules/ms-input-number"
+import InputField from "../../../../../components/molecules/input"
 import { NestedForm } from "../../../../../utils/nested-form"
 
 export type GeneralFormType = {
@@ -21,7 +21,7 @@ const GeneralForm = ({ form }: Props) => {
   return (
     <div>
       <div className="gap-x-large mb-small grid grid-cols-2">
-        <QuantityCell
+        <InputField
           label={t("general-form-location-name", "Location name")}
           placeholder={t(
             "general-form-flagship-store-warehouse",

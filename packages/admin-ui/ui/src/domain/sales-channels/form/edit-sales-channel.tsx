@@ -5,7 +5,7 @@ import { SalesChannel } from "@medusajs/medusa"
 import { useTranslation } from "react-i18next"
 
 import Button from "../../../components/fundamentals/button"
-import QuantityCell from "../../../components/molecules/ms-input-number"
+import InputField from "../../../components/molecules/input"
 import Modal from "../../../components/molecules/modal"
 import useNotification from "../../../hooks/use-notification"
 
@@ -72,13 +72,13 @@ function EditSalesChannel(props: EditSalesChannelProps) {
           </div>
 
           <div className="flex w-full flex-col gap-3">
-            <QuantityCell
+            <InputField
               label={t("form-name", "Name")}
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <QuantityCell
+            <InputField
               label={t("form-description", "Description")}
               name="description"
               value={description!}

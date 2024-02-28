@@ -1,6 +1,6 @@
 import FormValidator from "../../../../utils/form-validator"
 import { NestedForm } from "../../../../utils/nested-form"
-import QuantityCell from "../../../molecules/ms-input-number"
+import InputField from "../../../molecules/input"
 import TextArea from "../../../molecules/textarea"
 
 export type GiftCardReceiverFormType = {
@@ -21,7 +21,7 @@ const GiftCardReceiverForm = ({ form }: GiftCardReceiverFormProps) => {
 
   return (
     <div className="gap-y-large flex flex-col">
-      <QuantityCell
+      <InputField
         label="Email"
         {...register(path("email"), {
           required: FormValidator.required("Email"),
