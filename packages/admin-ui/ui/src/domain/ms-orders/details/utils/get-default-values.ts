@@ -81,7 +81,7 @@ export const getAllReturnableItems = (
           .filter(
             (it) =>
               it.shipped_quantity ||
-              it.shipped_quantity === it.fulfilled_quantity
+              it.shipped_quantity === it?.fulfilled_quantity
           )
           .reduce((map, obj) => map.set(obj.id, { ...obj }), orderItems)
       }

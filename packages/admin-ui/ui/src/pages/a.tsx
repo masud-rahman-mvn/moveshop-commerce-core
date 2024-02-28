@@ -24,7 +24,8 @@ import Settings from "../domain/settings"
 import { useRoutes } from "../providers/route-provider"
 import { isRoute } from "../utils/extensions"
 import Home from "../domain/home"
-import CreateOrder from "../domain/orders/create"
+import CreateOrder from "../domain/ms-orders/create"
+
 
 const IndexPage = () => {
   const navigate = useNavigate()

@@ -122,10 +122,10 @@ const DraftSummaryCard: React.FC<DraftSummaryCardProps> = ({ order }) => {
       const reservations = reservationItemsMap[item.id]
 
       return (
-        item.quantity === item.fulfilled_quantity ||
+        item.quantity === item?.fulfilled_quantity ||
         (reservations &&
           sum(reservations.map((r) => r.quantity)) ===
-            item.quantity - (item.fulfilled_quantity || 0))
+            item.quantity - (item?.fulfilled_quantity || 0))
       )
     })
   }, [cart.items, variantInventoryMap, reservationItemsMap])

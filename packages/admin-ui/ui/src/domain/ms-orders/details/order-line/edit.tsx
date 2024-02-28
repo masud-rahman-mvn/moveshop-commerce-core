@@ -46,7 +46,7 @@ const OrderEditLine = ({
 
   const isNew = change?.type === "item_add"
   const isModified = change?.type === "item_update"
-  const isLocked = !!item.fulfilled_quantity
+  const isLocked = !!item?.fulfilled_quantity
 
   const { mutateAsync: addLineItem } = useAdminOrderEditAddLineItem(
     item.order_edit_id!

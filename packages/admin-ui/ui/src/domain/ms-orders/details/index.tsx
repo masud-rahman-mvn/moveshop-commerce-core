@@ -65,11 +65,11 @@ import { formatAmountWithSymbol } from "../../../utils/prices"
 import OrderEditModal from "../edit/modal"
 import AddressModal from "./address-modal"
 import CreateFulfillmentModal from "./create-fulfillment"
-import SummaryCard from "./detail-cards/summary"
+
 import EmailModal from "./email-modal"
 import MarkShippedModal from "./mark-shipped"
 import CreateRefundModal from "./refund"
-import MsSummaryCard from "./detail-cards/msSummary"
+import MsSummaryCard from "./detail-cards/MsSummary"
 
 type OrderDetailFulfillment = {
   title: string
@@ -314,7 +314,7 @@ const OrderDetails = () => {
   }
 
   const anyItemsToFulfil = order.items.some(
-    (item: LineItem) => item.quantity > (item.fulfilled_quantity ?? 0)
+    (item: LineItem) => item.quantity > (item?.fulfilled_quantity ?? 0)
   )
 
   return (
@@ -372,8 +372,6 @@ const OrderDetails = () => {
                 <OrderEditContext.Consumer>
                   {({ isModalVisible }) => <MsSummaryCard order={order} />}
                 </OrderEditContext.Consumer>
-
-                <SummaryCard order={order} reservations={reservations || []} />
 
                 <BodyCard
                   className={"h-auto min-h-0 w-full"}

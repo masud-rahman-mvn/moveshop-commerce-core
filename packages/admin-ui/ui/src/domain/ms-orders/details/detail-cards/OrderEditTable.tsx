@@ -24,19 +24,17 @@ import { OrderEditContext } from "../../edit/context"
 import { LayeredModalContext } from "../../../../components/molecules/modal/layered-modal"
 
 type OrderEditModalProps = {
-  close: () => void
   orderEdit: OrderEdit
   currencyCode: string
-  regionId: string
-  customerId: string
-  currentSubtotal: number
-  paidTotal: number
-  refundedTotal: number
+  regionId?: string
+  customerId?: string
+  currentSubtotal?: number
+  paidTotal?: number
+  refundedTotal?: number
 }
 
 const OrderEditTable = (props: OrderEditModalProps) => {
   const {
-    close,
     currentSubtotal,
     orderEdit,
     currencyCode,
@@ -54,21 +52,23 @@ const OrderEditTable = (props: OrderEditModalProps) => {
   const [showFilter, setShowFilter] = useState(false)
   const [filterTerm, setFilterTerm] = useState<string>("")
 
-  const showTotals = currentSubtotal !== orderEdit.subtotal
-  const hasChanges = !!orderEdit.changes.length
+  const showTotals = currentSubtotal !== orderEdit?.subtotal
+  const hasChanges = !!orderEdit?.changes?.length
 
   const {
     mutateAsync: requestConfirmation,
     isLoading: isRequestingConfirmation,
-  } = useAdminRequestOrderEditConfirmation(orderEdit.id)
+  } = useAdminRequestOrderEditConfirmation(orderEdit?.id)
 
   const { mutateAsync: updateOrderEdit, isLoading: isUpdating } =
-    useAdminUpdateOrderEdit(orderEdit.id)
+    useAdminUpdateOrderEdit(orderEdit?.id)
 
-  const { mutateAsync: deleteOrderEdit } = useAdminDeleteOrderEdit(orderEdit.id)
+  const { mutateAsync: deleteOrderEdit } = useAdminDeleteOrderEdit(
+    orderEdit?.id
+  )
 
   const { mutateAsync: addLineItem } = useAdminOrderEditAddLineItem(
-    orderEdit.id
+    orderEdit?.id
   )
 
   const layeredModalContext = useContext(LayeredModalContext)
@@ -113,7 +113,7 @@ const OrderEditTable = (props: OrderEditModalProps) => {
   const onAddVariants = async (selectedVariants: ProductVariant[]) => {
     try {
       const promises = selectedVariants.map((v) =>
-        addLineItem({ variant_id: v.id, quantity: 1 })
+        addLineItem({ variant_id: v?.id, quantity: 1 })
       )
 
       await Promise.all(promises)
@@ -139,7 +139,7 @@ const OrderEditTable = (props: OrderEditModalProps) => {
     setShowFilter((s) => !s)
   }
 
-  let displayItems = orderEdit.items.sort(
+  let displayItems = orderEdit?.items?.sort(
     // @ts-ignore
     (a, b) => new Date(a.created_at) - new Date(b.created_at)
   )
@@ -191,7 +191,7 @@ const OrderEditTable = (props: OrderEditModalProps) => {
             {displayItems?.map((oi, index) => {
               return (
                 <Table.Row
-                  key={item.id}
+                  key={item?.id}
                   className={clsx("border-b-grey-0 hover:bg-grey-0")}
                 >
                   <Table.Cell>
@@ -226,7 +226,7 @@ const OrderEditTable = (props: OrderEditModalProps) => {
                     X
                   </Table.Cell>
                   <Table.Cell className="flex flex-col items-center text-center ">
-                    <QuantityCell quantity={oi?.quantity} />
+                    <QuantityCell quantity={1} />
                   </Table.Cell>
                   <Table.Cell>
                     <div className="flex items-center justify-center gap-3 ">
@@ -238,16 +238,16 @@ const OrderEditTable = (props: OrderEditModalProps) => {
                   </Table.Cell>
                   <Table.Cell>
                     <OrderEditLine
-                      key={oi.id}
+                      key={oi?.id}
                       item={oi}
                       customerId={customerId}
                       regionId={regionId}
                       currencyCode={currencyCode}
-                      change={orderEdit.changes.find(
-                        (change) =>
-                          change.line_item_id === oi.id ||
-                          change.original_line_item_id === oi.id
-                      )}
+                      // change={orderEdit?.changes?.find(
+                      //   (change) =>
+                      //     change.line_item_id === oi.id ||
+                      //     change.original_line_item_id === oi.id
+                      // )}
                     />
                   </Table.Cell>
                 </Table.Row>

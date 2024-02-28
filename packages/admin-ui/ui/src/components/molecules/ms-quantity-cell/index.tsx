@@ -21,6 +21,10 @@ import {
 } from "medusa-react"
 import { clx } from "../../../utils/clx"
 import { formatAmountWithSymbol } from "../../../utils/prices"
+import RefreshIcon from "../../fundamentals/icons/refresh-icon"
+import DuplicateIcon from "../../fundamentals/icons/duplicate-icon"
+import TrashIcon from "../../fundamentals/icons/trash-icon"
+import { AddProductVariant } from "../../../domain/ms-orders/edit/modal"
 
 export type InputProps = Omit<React.ComponentPropsWithRef<"input">, "prefix"> &
   InputHeaderProps & {
@@ -56,10 +60,6 @@ const QuantityCell = ({
   regionId,
   className,
 }: OrderEditLineProps) => {
-  const { t } = useTranslation()
-  const notification = useNotification()
-  const { pop, push } = React.useContext(LayeredModalContext)
-
   const isNew = change?.type === "item_add"
   const isModified = change?.type === "item_update"
   const isLocked = !!item.fulfilled_quantity
@@ -84,7 +84,6 @@ const QuantityCell = ({
   )
 
   const onQuantityUpdate = async (newQuantity: number) => {
-    alert(newQuantity)
     if (isLoading) {
       return
     }
@@ -96,10 +95,6 @@ const QuantityCell = ({
       isLoading = false
     }
   }
-
-  const onNumberIncrement = () => {}
-
-  const onNumberDecrement = () => {}
 
   return (
     <div className={clsx("w-20 rounded-lg border px-3 py-0.5", className)}>

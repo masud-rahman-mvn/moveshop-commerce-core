@@ -19,11 +19,11 @@ import { usePolling } from "../../providers/polling-provider"
 import { useRoutes } from "../../providers/route-provider"
 import { useWidgets } from "../../providers/widget-provider"
 import { getErrorMessage } from "../../utils/error-messages"
-import Details from "./details"
 import { transformFiltersAsExportContext } from "./utils"
 import EditIcon from "../../components/fundamentals/icons/edit-icon"
 import OrderCrate from "./create"
 import NewOrderFormProvider from "./new/form"
+import OrderDetails from "./details"
 
 const VIEWS = ["orders", "drafts"]
 
@@ -169,7 +169,7 @@ const Orders = () => {
         path="/:id"
         element={
           <NewOrderFormProvider>
-            <Details />
+            <OrderDetails />
           </NewOrderFormProvider>
         }
       />

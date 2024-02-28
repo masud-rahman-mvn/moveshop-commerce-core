@@ -21,10 +21,11 @@ import { useAdminCreateOrderEdit, useMedusa } from "medusa-react"
 import StatusIndicator from "../../../../components/fundamentals/status-indicator"
 import useToggleState from "../../../../hooks/use-toggle-state"
 import { useFeatureFlag } from "../../../../providers/feature-flag-provider"
-import ItemsEdit from "./ItemsEdit"
+
 import BodyCard from "../../../../components/organisms/ms-body-card"
 
 import useNotification from "../../../../hooks/use-notification"
+import OrderEditTable from "./OrderEditTable"
 
 type SummaryCardProps = {
   order?: Order | undefined
@@ -37,6 +38,8 @@ const MsSummaryCard: React.FC<SummaryCardProps> = (props: SummaryCardProps) => {
   const { hideModal, orderEdits, activeOrderEditId, setActiveOrderEdit } =
     useContext(OrderEditContext)
 
+  console.log("activeOrderEditId :>> ", activeOrderEditId)
+  console.log("orderEdits :>> ", orderEdits)
   const { mutateAsync: createOrderEdit } = useAdminCreateOrderEdit()
 
   const orderEdit = orderEdits?.find((oe) => oe.id === activeOrderEditId)
@@ -65,27 +68,23 @@ const MsSummaryCard: React.FC<SummaryCardProps> = (props: SummaryCardProps) => {
     // setActiveOrderEdit(undefined) -> context will unset active edit after flag toggle
     hideModal()
   }
-
-  if (!orderEdit) {
-    return null
-  }
-
+  // console.log("orderEdit :>> ", orderEdit)
+  // if (!orderEdit) {
+  //   return null
+  // }
+  // console.log("order :>> ", order)
   return (
     <BodyCard
       className={"my-4 h-auto min-h-0 w-full rounded-lg bg-white p-5 shadow"}
       title="Order Summary"
     >
-      <ItemsEdit
-        close={onClose}
+      <OrderEditTable
         orderEdit={orderEdit}
-        currentSubtotal={order.subtotal}
-        regionId={order.region_id}
-        customerId={order.customer_id}
-        currencyCode={order.currency_code}
-        paidTotal={order.paid_total}
-        refundedTotal={order.refunded_total}
+        regionId={order?.region_id}
+        customerId={order?.customer_id}
+        currencyCode={order?.currency_code}
+        paidTotal={order?.paid_total}
       />
-      {/* <OrderEditContainer order={order} /> */}
     </BodyCard>
   )
 }

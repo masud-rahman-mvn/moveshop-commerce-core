@@ -10,7 +10,7 @@ import { useAdminVariantsInventory } from "medusa-react"
 import { useFeatureFlag } from "../../../../providers/feature-flag-provider"
 
 export const getFulfillableQuantity = (item: LineItem): number => {
-  return item.quantity - (item.fulfilled_quantity || 0)
+  return item.quantity - (item?.fulfilled_quantity || 0)
 }
 
 const CreateFulfillmentItemsTable = ({
