@@ -77,11 +77,11 @@ const ItemsEdit = (props: SummaryCardProps) => {
   }
 
   return (
-    <div className="rounded-lg border">
+    <div className="rounded-lg border ">
       {true && (
-        <Table className=" ">
+        <Table className=" m-3">
           <Table.Head className=" ">
-            <Table.HeadRow className="text-small  rounded-lg   font-bold text-black ">
+            <Table.HeadRow className="text-small rounded-lg  font-bold text-black ">
               <Table.HeadCell>
                 {t("components-item-name", "Item Name")}
               </Table.HeadCell>

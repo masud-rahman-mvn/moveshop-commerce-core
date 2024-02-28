@@ -100,7 +100,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
             )}
           </div>
         </div>
-        <div >
+        <div>
           <table
             ref={ref}
             className={clsx("w-full table-auto", className)}
@@ -121,7 +121,7 @@ Table.Head = React.forwardRef<
   <thead
     ref={ref}
     className={clsx(
-      "inter-small-semibold text-grey-50 border-grey-20 whitespace-nowrap ",
+      "inter-small-semibold text-grey-50  whitespace-nowrap ",
       className
     )}
     {...props}
@@ -240,13 +240,9 @@ Table.Row = React.forwardRef<HTMLTableRowElement, TableRowProps>(
     return (
       <tr
         ref={ref}
-        className={clsx(
-          "inter-small-regular border-grey-20 text-grey-90 ",
-          className,
-          {
-            "hover:bg-grey-5 cursor-pointer": linkTo !== undefined || clickable,
-          }
-        )}
+        className={clsx("inter-small-regular  text-grey-90 ", className, {
+          "hover:bg-grey-5 cursor-pointer": linkTo !== undefined || clickable,
+        })}
         {...props}
         {...(linkTo && {
           onClick: () => {
