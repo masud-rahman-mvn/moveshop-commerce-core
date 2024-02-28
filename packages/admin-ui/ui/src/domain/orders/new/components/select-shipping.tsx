@@ -52,17 +52,16 @@ const SelectShippingMethod = () => {
     }
   }, [selectedShippingOption])
 
-
   return (
-    <div className="">
-      {/*<span className="inter-base-semibold">*/}
-      {/*  Shipping method{" "}*/}
-      {/*  <span className="inter-base-regular text-grey-50">*/}
-      {/*    {t("select-shipping-to-name", "(To {{name}})", {*/}
-      {/*      name: region?.name,*/}
-      {/*    })}*/}
-      {/*  </span>*/}
-      {/*</span>*/}
+    <div className="min-h-[705px]">
+      <span className="inter-base-semibold">
+        Shipping method{" "}
+        <span className="inter-base-regular text-grey-50">
+          {t("select-shipping-to-name", "(To {{name}})", {
+            name: region!.name,
+          })}
+        </span>
+      </span>
 
       {region ? (
         !shippingOptions?.length ? (
@@ -74,6 +73,10 @@ const SelectShippingMethod = () => {
               <span className="inter-small-semibold">
                 {t("components-attention", "Attention!")}
               </span>
+              {t(
+                "components-no-options-for-orders-without-shipping",
+                'You don\'t have any options for orders without shipping. Please add one (e.g. "In-store fulfillment") with "Show on website" unchecked in region settings and continue.'
+              )}
             </div>
           </div>
         ) : (
@@ -96,7 +99,7 @@ const SelectShippingMethod = () => {
                         label: `${so.name} - ${extractOptionPrice(
                           so.amount,
                           region
-                        )}`
+                        )}`,
                       })) || []
                     }
                   />
@@ -118,7 +121,7 @@ const SelectShippingMethod = () => {
                 </div>
               )}
               {showCustomPrice && (
-                <div className="flex items-center justify-center">
+                <div className="flex items-center">
                   <div className="w-full">
                     <Controller
                       control={control}
@@ -147,7 +150,7 @@ const SelectShippingMethod = () => {
                     variant="ghost"
                     size="small"
                     onClick={removeCustomPrice}
-                    className="text-grey-40 ml-8 h-8 w-8 mt-7"
+                    className="text-grey-40 ml-8 h-8 w-8"
                   >
                     <TrashIcon size={20} />
                   </Button>

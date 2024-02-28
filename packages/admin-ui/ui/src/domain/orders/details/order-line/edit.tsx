@@ -68,6 +68,7 @@ const OrderEditLine = ({
   )
 
   const onQuantityUpdate = async (newQuantity: number) => {
+    alert(newQuantity)
     if (isLoading) {
       return
     }
@@ -198,7 +199,7 @@ const OrderEditLine = ({
         "This line item is part of a fulfillment and cannot be edited. Cancel the fulfillment to edit the line item."
       )}
     >
-      <div className="hover:bg-grey-5 rounded-rounded mx-[-5px] mb-1 flex h-[64px] justify-between py-2 px-[5px]">
+      <div className="hover:bg-grey-5 rounded-rounded mx-[-5px] mb-1 flex h-[64px] justify-between px-[5px] py-2">
         <div className="flex-grow-1 flex justify-center space-x-4">
           <div className="rounded-rounded flex h-[48px] w-[36px] overflow-hidden">
             {item.thumbnail ? (

@@ -368,11 +368,12 @@ const OrderDetails = () => {
                     },
                   ]}
                 ></BodyCard>
-                <MsSummaryCard
-                  order={order}
-                  reservations={reservations || []}
-                />
-                {/* <SummaryCard order={order} reservations={reservations || []} /> */}
+
+                <OrderEditContext.Consumer>
+                  {({ isModalVisible }) => <MsSummaryCard order={order} />}
+                </OrderEditContext.Consumer>
+
+                <SummaryCard order={order} reservations={reservations || []} />
 
                 <BodyCard
                   className={"h-auto min-h-0 w-full"}

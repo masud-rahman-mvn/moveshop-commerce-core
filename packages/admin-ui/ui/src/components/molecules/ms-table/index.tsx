@@ -118,14 +118,7 @@ Table.Head = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, children, ...props }, ref) => (
-  <thead
-    ref={ref}
-    className={clsx(
-      "inter-small-semibold text-grey-50  whitespace-nowrap ",
-      className
-    )}
-    {...props}
-  >
+  <thead ref={ref} className={clsx("text-black", className)} {...props}>
     {children}
   </thead>
 ))

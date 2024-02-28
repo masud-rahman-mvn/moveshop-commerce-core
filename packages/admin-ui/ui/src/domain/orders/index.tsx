@@ -11,16 +11,15 @@ import ExportIcon from "../../components/fundamentals/icons/export-icon"
 import BodyCard from "../../components/organisms/body-card"
 import TableViewHeader from "../../components/organisms/custom-table-header"
 import ExportModal from "../../components/organisms/export-modal"
+import OrderTable from "../../components/templates/order-table"
 import useNotification from "../../hooks/use-notification"
 import useToggleState from "../../hooks/use-toggle-state"
 import { usePolling } from "../../providers/polling-provider"
 import { useRoutes } from "../../providers/route-provider"
 import { useWidgets } from "../../providers/widget-provider"
 import { getErrorMessage } from "../../utils/error-messages"
-import Details from "./ms-details"
+import Details from "./details"
 import { transformFiltersAsExportContext } from "./utils"
-import EditIcon from "../../components/fundamentals/icons/edit-icon";
-import MsOrderTable from "../../components/templates/ms-order-table"
 
 const VIEWS = ["orders", "drafts"]
 
@@ -46,7 +45,6 @@ const OrderIndex = () => {
 
   const actions = useMemo(() => {
     return [
-      <div className="flex space-x-2">
       <Button
         key="export"
         variant="secondary"
@@ -55,17 +53,7 @@ const OrderIndex = () => {
       >
         <ExportIcon size={20} />
         Export Orders
-      </Button>
-      <Button
-          key="order_create"
-          variant="secondary"
-          size="small"
-          onClick={() => navigate(`/a/order/create`)}
-      >
-        <EditIcon size={20} />
-        Create order
-      </Button>
-      </div>
+      </Button>,
     ]
   }, [view])
 
@@ -127,7 +115,7 @@ const OrderIndex = () => {
             className="h-fit"
             customActionable={actions}
           >
-            <MsOrderTable setContextFilters={setContextFilters} />
+            <OrderTable setContextFilters={setContextFilters} />
           </BodyCard>
         </div>
         {getWidgets("order.list.after").map((w, i) => {

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import Button from "../../../../components/fundamentals/button"
-import QuantityCell from "../../../../components/molecules/ms-input-number"
+import InputField from "../../../../components/molecules/input"
 import Modal from "../../../../components/molecules/modal"
 import { LayeredModalContext } from "../../../../components/molecules/modal/layered-modal"
 import CurrencyInput from "../../../../components/organisms/currency-input"
@@ -32,7 +32,7 @@ const CustomItemSubModal: React.FC<CustomItemSubModalProps> = ({
     <>
       <Modal.Content>
         <div className="gap-y-xsmall min-h-[705px]">
-          <QuantityCell
+          <InputField
             placeholder={t(
               "components-e-g-gift-wrapping",
               "E.g. Gift wrapping"
@@ -54,7 +54,7 @@ const CustomItemSubModal: React.FC<CustomItemSubModalProps> = ({
               onChange={(value) => setAmount(value || 0)}
             />
           </CurrencyInput.Root>
-          <QuantityCell
+          <InputField
             className="my-4"
             label={t("components-quantity", "Quantity")}
             {...register("quantity", { required: true })}
